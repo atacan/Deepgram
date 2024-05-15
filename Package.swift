@@ -6,49 +6,43 @@ import PackageDescription
 let package = Package(
     name: "SwiftDeepgram",
     platforms: [
-            .macOS(.v14),
-            .iOS(.v17),
-            .watchOS(.v6),
-            .tvOS(.v13)
-        ],
+        .macOS(.v14),
+        .iOS(.v17),
+        .watchOS(.v6),
+        .tvOS(.v13),
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "SwiftDeepgram",
-            targets: ["SwiftDeepgram"]),
-        .library(name: "DeepgramURLSessionClient", targets: ["DeepgramURLSessionClient"]),
-        .library(name: "DeepgramModels", targets: ["DeepgramModels"]),
+        // the models for request and response
+        .library(name: "SwiftDeepgram", targets: ["SwiftDeepgram"]),
+        // local use for apps
         .library(name: "DeepgramDependency", targets: ["DeepgramDependency"]),
+        // usable on linux server
+        .library(name: "DeepgramServerDependency", targets: ["DeepgramServerDependency"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-openapi-generator", from: "1.0.0"),
-        .package(url: "https://github.com/apple/swift-openapi-runtime", from: "1.0.0"),
-        .package(url: "https://github.com/apple/swift-openapi-urlsession", from: "1.0.0"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.2.1"),
+        .package(path: "../HttpClientDependency")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "SwiftDeepgram"),
-        .target(name: "DeepgramModels"),
-        .target(name: "DeepgramDependency", 
+        .target(name: "SwiftDeepgram"),
+        .target(name: "DeepgramDependency",
                 dependencies: [
-                    "DeepgramModels",
+                    "SwiftDeepgram",
                     .product(name: "Dependencies", package: "swift-dependencies"),
                 ]),
-        .target(name: "DeepgramURLSessionClient",
-                dependencies: [
-                    .product(name: "OpenAPIRuntime", package: "swift-openapi-runtime"),
-                    .product(name: "OpenAPIURLSession", package: "swift-openapi-urlsession"),
-                ],
-                plugins: [.plugin(name: "OpenAPIGenerator", package: "swift-openapi-generator")]
-                
-               ),
-        .testTarget(
-            name: "SwiftDeepgramTests",
-            dependencies: ["SwiftDeepgram"]),
-        .testTarget(name: "DeepgramURLSessionClientTests", dependencies: ["DeepgramURLSessionClient"]),
+
+            .target(name: "DeepgramServerDependency",
+                    dependencies: [
+                        "SwiftDeepgram",
+                        .product(name: "Dependencies", package: "swift-dependencies"),
+                        .product(name: "HttpClientDependency", package: "HttpClientDependency"),
+                    ]),
+
+            .testTarget(name: "SwiftDeepgramTests",
+                        dependencies: ["SwiftDeepgram"]),
+        
         .testTarget(name: "DeepgramDependencyTests", dependencies: ["DeepgramDependency"]),
     ]
 )
