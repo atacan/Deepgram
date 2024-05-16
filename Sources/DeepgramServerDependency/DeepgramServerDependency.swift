@@ -20,7 +20,7 @@ extension DeepgramServerDependency: DependencyKey {
                 localFileRequest.body = audio
                 let response = try await HTTPClient.shared.execute(localFileRequest, timeout: .minutes(20))
 //                if response.status == .ok {
-                    print(response)
+                    dump(response)
 //                }
                 
                 return .init(response.status.code)
