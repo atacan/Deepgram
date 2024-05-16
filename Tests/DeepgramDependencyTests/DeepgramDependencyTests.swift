@@ -7,7 +7,7 @@ import XCTest
 import DeepgramDependency
 import Dependencies
 import Foundation
-import DeepgramModels
+import SwiftDeepgram
 
 final class DeepgramDependencyTests: XCTestCase {
 
@@ -29,7 +29,12 @@ final class DeepgramDependencyTests: XCTestCase {
     func testLiveValue() async throws {
         let url = URL(filePath: "/Users/atacan/Documents/myway/_Develop/DownloadedRepos/whisper.cpp/samples/jfk.wav")
 //        let url = URL(filePath: "/Users/atacan/Downloads/Deepgram Test.m4a")
-        let parameters = SpeechToTextParameters(smartFormat: true, punctuation: true, model: "nova-2", language: "en-US")
+        var parameters = QueryParameters()
+        parameters.smartFormat = true
+        parameters.punctuate = true
+        parameters.model = "nova-2"
+        parameters.language = "en-US"
+        
         let text = try await DeepgramClient.liveValue.transcribeLocalAudio(url, parameters)
         
         XCTAssertEqual("And so my fellow Americans, ask not what your country can do for you, ask what you can do for your country.", text)

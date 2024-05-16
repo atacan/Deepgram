@@ -21,7 +21,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.2.1"),
-        .package(path: "../HttpClientDependency")
+        .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.6.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -37,7 +37,7 @@ let package = Package(
                     dependencies: [
                         "SwiftDeepgram",
                         .product(name: "Dependencies", package: "swift-dependencies"),
-                        .product(name: "HttpClientDependency", package: "HttpClientDependency"),
+                        .product(name: "AsyncHTTPClient", package: "async-http-client"),
                     ]),
 
             .testTarget(name: "SwiftDeepgramTests",

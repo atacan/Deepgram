@@ -1,6 +1,4 @@
-//
-// https://github.com/atacan
-// 05.04.24
+#if os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || os(visionOS)
 
 import Dependencies
 import Foundation
@@ -128,3 +126,5 @@ extension QueryParameters {
         return items
     }
 }
+
+#endif
