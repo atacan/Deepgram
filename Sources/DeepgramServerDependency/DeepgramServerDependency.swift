@@ -4,7 +4,7 @@ import SwiftDeepgram
 import Dependencies
 
 public struct DeepgramServerDependency{
-    var transcribeLocalFile: @Sendable (SwiftDeepgram.QueryParameters) async throws -> String
+    public var transcribeLocalFile: @Sendable (_ audio: HTTPClientRequest.Body, SwiftDeepgram.QueryParameters) async throws -> Int
 }
 
 extension DeepgramServerDependency: DependencyKey {
@@ -15,13 +15,26 @@ extension DeepgramServerDependency: DependencyKey {
         request.headers.replaceOrAdd(name: "Authorization", value: "Token \(SwiftDeepgram.Env.deepgramApiKey)")
         
         return Self(
-            transcribeLocalFile: { [request] queryParameters in
+            transcribeLocalFile: { [request] audio, queryParameters in
                 var localFileRequest = request
                 localFileRequest.method = .POST
                 localFileRequest.headers.replaceOrAdd(name: "Content-Type", value: "audio/wav")
+                localFileRequest.body = audio
+                let response = try await asyncHttpClient.execute(localFileRequest, timeout: .minutes(20))
+//                if response.status == .ok {
+                    print(response)
+//                }
                 
-                return "todo"
+                return .init(response.status.code)
             }
         )
     }()
+}
+
+
+extension DependencyValues {
+    public var deepgram: DeepgramServerDependency {
+        get { self[DeepgramServerDependency.self] }
+        set { self[DeepgramServerDependency.self] = newValue }
+    }
 }
