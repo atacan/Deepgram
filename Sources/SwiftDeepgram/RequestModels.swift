@@ -39,6 +39,42 @@ public struct QueryParameters: Codable {
     public let utterances: Bool?
     public let uttSplit: Double?
     public let version: String?
+    
+    public init(callback: String? = nil, callbackMethod: Bool? = nil, customTopic: String? = nil, customTopicMode: String? = nil, diarize: Bool? = nil, diarizeVersion: String? = nil, dictation: Bool? = nil, detectEntities: Bool? = nil, detectLanguage: Bool? = nil, detectTopics: Bool? = nil, extra: String? = nil, fillerWords: Bool? = nil, intents: Bool? = nil, keywords: String? = nil, language: String? = nil, measurements: Bool? = nil, model: String? = nil, multichannel: Bool? = nil, numerals: Bool? = nil, paragraphs: Bool? = nil, profanityFilter: Bool? = nil, punctuate: Bool? = nil, redact: String? = nil, replace: String? = nil, smartFormat: Bool? = nil, search: String? = nil, sentiment: Bool? = nil, summarize: String? = nil, tag: String? = nil, topics: Bool? = nil, utterances: Bool? = nil, uttSplit: Double? = nil, version: String? = nil) {
+        self.callback = callback
+        self.callbackMethod = callbackMethod
+        self.customTopic = customTopic
+        self.customTopicMode = customTopicMode
+        self.diarize = diarize
+        self.diarizeVersion = diarizeVersion
+        self.dictation = dictation
+        self.detectEntities = detectEntities
+        self.detectLanguage = detectLanguage
+        self.detectTopics = detectTopics
+        self.extra = extra
+        self.fillerWords = fillerWords
+        self.intents = intents
+        self.keywords = keywords
+        self.language = language
+        self.measurements = measurements
+        self.model = model
+        self.multichannel = multichannel
+        self.numerals = numerals
+        self.paragraphs = paragraphs
+        self.profanityFilter = profanityFilter
+        self.punctuate = punctuate
+        self.redact = redact
+        self.replace = replace
+        self.smartFormat = smartFormat
+        self.search = search
+        self.sentiment = sentiment
+        self.summarize = summarize
+        self.tag = tag
+        self.topics = topics
+        self.utterances = utterances
+        self.uttSplit = uttSplit
+        self.version = version
+    }
 
     // CodingKeys to map snake_case to camelCase for encoding/decoding
     public enum CodingKeys: String, CodingKey {
