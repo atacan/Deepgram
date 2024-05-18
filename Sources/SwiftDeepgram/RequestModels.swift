@@ -77,7 +77,7 @@ public struct QueryParameters: Codable {
     }
 
     // CodingKeys to map snake_case to camelCase for encoding/decoding
-    public enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey, CaseIterable {
         case callback
         case callbackMethod = "callback_method"
         case customTopic = "custom_topic"

@@ -1,9 +1,10 @@
 import AsyncHTTPClient
 import SwiftDeepgram
 import Dependencies
+import Foundation
 
 public struct DeepgramServerDependency{
-    public var transcribeLocalFile: @Sendable (_ audio: HTTPClientRequest.Body, SwiftDeepgram.QueryParameters) async throws -> Int
+    public var transcribeLocalFile: @Sendable (_ audio: HTTPClientRequest.Body, SwiftDeepgram.QueryParameters) async throws -> DeepgramResponse
 }
 
 extension DeepgramServerDependency: DependencyKey {
@@ -19,11 +20,10 @@ extension DeepgramServerDependency: DependencyKey {
                 localFileRequest.headers.replaceOrAdd(name: "Content-Type", value: "audio/wav")
                 localFileRequest.body = audio
                 let response = try await HTTPClient.shared.execute(localFileRequest, timeout: .minutes(20))
-//                if response.status == .ok {
-                    dump(response)
-//                }
+                let buffer = try await response.body.collect(upTo: 1024 * 1024 * 2)
+                let output = try JSONDecoder().decode(DeepgramResponse.self, from: buffer)
                 
-                return .init(response.status.code)
+                return output
             }
         )
     }()
