@@ -22,8 +22,9 @@ extension DeepgramClient: DependencyKey {
             // Create an instance of your parameters
 
             // Prepare the base URL
-            guard let baseUrl = URL(string: "https://api.deepgram.com/v1/listen") else {
-                fatalError("Invalid base URL")
+//            guard let baseUrl = URL(string: "https://api.deepgram.com/v1/listen") else {
+            guard let baseUrl = URL(string: "http://127.0.0.1:8080/auth/deepgram") else {
+                throw Failure.invalidBaseURL
             }
             let url = baseUrl.appending(queryItems: parameters.toURLQueryItems())
 
@@ -64,10 +65,24 @@ extension DeepgramClient: DependencyKey {
 }
 
 extension DeepgramClient {
-    public enum Failure: Error {
+    public enum Failure: Error, LocalizedError {
+        case invalidBaseURL
         case responseIsNotHTTPURLResponse
         case httpStatus(NSInteger)
         case responseNotJson
+        
+        public var errorDescription: String? {
+            switch self {
+            case .invalidBaseURL:
+                return "invalidBaseURL"
+            case .responseIsNotHTTPURLResponse:
+                return "responseIsNotHTTPURLResponse"
+            case .httpStatus(let nSInteger):
+                return "httpStatus \(nSInteger)"
+            case .responseNotJson:
+                return "responseNotJson"
+            }
+        }
     }
 }
 
