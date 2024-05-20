@@ -5,7 +5,7 @@ import Foundation
 import SwiftDeepgram
 
 public struct DeepgramClient {
-    public var transcribeLocalAudio: @Sendable (URL, QueryParameters) async throws -> String
+    public var transcribeLocalAudio: @Sendable (URL, DeepgramQueryParameters) async throws -> String
 }
 
 extension DeepgramClient: DependencyKey {
@@ -51,15 +51,21 @@ extension DeepgramClient: DependencyKey {
 
             let decoder = JSONDecoder()
             let deepgramResponse = try decoder.decode(DeepgramResponse.self, from: data)
-
-            #if DEBUG
+#if DEBUG
             if let responseBody = String(data: data, encoding: .utf8) {
                 print("📢 \(responseBody)")
             }
             dump(deepgramResponse.results.channels[0].alternatives[0].paragraphs.debugDescription)
-            #endif
-
-            return deepgramResponse.results.channels[0].alternatives[0].transcript
+#endif
+            let firstAlternative = deepgramResponse.results.channels[0].alternatives[0]
+            if let paragraphs = firstAlternative.paragraphs {
+                return paragraphs.paragraphs.map({ paragraph in
+                    return paragraph.sentences.map(\.text).joined(separator: " ")
+                })
+                .joined(separator: "\n\n")
+            } else {
+                return firstAlternative.transcript
+            }
         }
     )
 }
@@ -93,7 +99,7 @@ extension DependencyValues {
     }
 }
 
-extension QueryParameters {
+extension DeepgramQueryParameters {
     func toURLQueryItems() -> [URLQueryItem] {
         var items = [URLQueryItem]()
 
