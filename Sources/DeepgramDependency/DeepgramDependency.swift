@@ -2,7 +2,7 @@
 
 import Dependencies
 import Foundation
-import SwiftDeepgram
+import Deepgram
 
 public struct DeepgramClient {
     public var transcribeLocalAudio: @Sendable (URL, DeepgramQueryParameters) async throws -> String
@@ -27,6 +27,7 @@ extension DeepgramClient: DependencyKey {
                 throw Failure.invalidBaseURL
             }
             let url = baseUrl.appending(queryItems: parameters.toURLQueryItems())
+            print("deepgram url", url)
 
             // Create and configure the URLRequest
             var request = URLRequest(url: url)
@@ -45,18 +46,12 @@ extension DeepgramClient: DependencyKey {
                 throw Failure.httpStatus(httpResponse.statusCode)
             }
 
-            guard let mimeType = httpResponse.mimeType, mimeType == "application/json" else {
-                throw Failure.responseNotJson
-            }
+//            guard let mimeType = httpResponse.mimeType, mimeType == "application/json" else {
+//                throw Failure.responseNotJson
+//            }
 
             let decoder = JSONDecoder()
             let deepgramResponse = try decoder.decode(DeepgramResponse.self, from: data)
-#if DEBUG
-            if let responseBody = String(data: data, encoding: .utf8) {
-                print("📢 \(responseBody)")
-            }
-            dump(deepgramResponse.results.channels[0].alternatives[0].paragraphs.debugDescription)
-#endif
             let firstAlternative = deepgramResponse.results.channels[0].alternatives[0]
             if let paragraphs = firstAlternative.paragraphs {
                 return paragraphs.paragraphs.map({ paragraph in
@@ -110,6 +105,15 @@ extension DeepgramQueryParameters {
             }
         }
 
+        // Helper function to add a query item if the value is not nil
+        func addKeywords() {
+            if let keywords = self.keywords {
+                keywords.words.forEach { word in
+                    items.append(URLQueryItem(name: "keywords", value: word))
+                }
+            }
+        }
+
         addQueryItem(name: CodingKeys.callback.rawValue, value: callback)
         addQueryItem(name: CodingKeys.callbackMethod.rawValue, value: callbackMethod)
         addQueryItem(name: CodingKeys.customTopic.rawValue, value: customTopic)
@@ -123,7 +127,8 @@ extension DeepgramQueryParameters {
         addQueryItem(name: CodingKeys.extra.rawValue, value: extra)
         addQueryItem(name: CodingKeys.fillerWords.rawValue, value: fillerWords)
         addQueryItem(name: CodingKeys.intents.rawValue, value: intents)
-        addQueryItem(name: CodingKeys.keywords.rawValue, value: keywords)
+//        addQueryItem(name: CodingKeys.keywords.rawValue, value: keywords)
+        addKeywords()
         addQueryItem(name: CodingKeys.language.rawValue, value: language)
         addQueryItem(name: CodingKeys.measurements.rawValue, value: measurements)
         addQueryItem(name: CodingKeys.model.rawValue, value: model)

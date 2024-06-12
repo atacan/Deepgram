@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftDeepgram",
+    name: "Deepgram",
     platforms: [
         .macOS(.v14),
         .iOS(.v17),
@@ -13,11 +13,9 @@ let package = Package(
     ],
     products: [
         // the models for request and response
-        .library(name: "SwiftDeepgram", targets: ["SwiftDeepgram"]),
+        .library(name: "Deepgram", targets: ["Deepgram"]),
         // local use for apps
         .library(name: "DeepgramDependency", targets: ["DeepgramDependency"]),
-        // usable on linux server
-        .library(name: "DeepgramServerDependency", targets: ["DeepgramServerDependency"]),
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.2.1"),
@@ -26,22 +24,15 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-        .target(name: "SwiftDeepgram"),
+        .target(name: "Deepgram"),
         .target(name: "DeepgramDependency",
                 dependencies: [
-                    "SwiftDeepgram",
+                    "Deepgram",
                     .product(name: "Dependencies", package: "swift-dependencies"),
                 ]),
 
-            .target(name: "DeepgramServerDependency",
-                    dependencies: [
-                        "SwiftDeepgram",
-                        .product(name: "Dependencies", package: "swift-dependencies"),
-                        .product(name: "AsyncHTTPClient", package: "async-http-client"),
-                    ]),
-
-            .testTarget(name: "SwiftDeepgramTests",
-                        dependencies: ["SwiftDeepgram"]),
+            .testTarget(name: "DeepgramTests",
+                        dependencies: ["Deepgram"]),
         
         .testTarget(name: "DeepgramDependencyTests", dependencies: ["DeepgramDependency"]),
     ]

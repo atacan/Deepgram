@@ -4,14 +4,14 @@
 
 import Foundation
 
-public struct DeepgramQueryParameters: Codable {
+public struct DeepgramQueryParameters: Codable, Equatable {
     /// Callback URL to provide if you would like your submitted audio to be processed asynchronously. 
     public var callback: String?
     /// Enable a callback method. Default: false
     public var callbackMethod: Bool?
     /// A custom topic you want the model to detect within your input audio if present. Submit up to one hundred topics.
     public var customTopic: String?
-    /// When strict, the model will only return topics submitted using the custom_topic param. When extended, the model will return its own detected topics in addition to those submitted using the custom_topic param. Default: extended
+    /// When strict, the model will only return topics submitted using the `custom_topic` param. When extended, the model will return its own detected topics in addition to those submitted using the `custom_topic` param. Default: extended
     public var customTopicMode: String?
     /// Recognize speaker changes. Each word in the transcript will be assigned a speaker number starting at 0. Default: false.
     public var diarize: Bool?
@@ -32,9 +32,9 @@ public struct DeepgramQueryParameters: Codable {
     /// Recognizes speaker intent throughout an entire transcript. Returns a list of text segments and the intents found within each segment.
     public var intents: Bool?
     /// Uncommon proper nouns or other words to transcribe that are not a part of the model's vocabulary. Can send multiple instances in query string (for example, keywords=snuffalupagus:10&keywords=systrom:5.5).
-    public var keywords: String?
+    public var keywords: Keywords?
     /// The BCP-47 language tag that hints at the primary spoken language. Default: en.
-    public var language: String?
+    public var language: DeepgramLanguage?
     /// Spoken measurements will be converted to their corresponding abbreviations. e.g., milligram to mg. Default: false
     public var measurements: Bool?
     /// AI model used to process submitted audio. Default: base-general.
@@ -86,8 +86,8 @@ public struct DeepgramQueryParameters: Codable {
         extra: String? = nil,
         fillerWords: Bool? = nil,
         intents: Bool? = nil,
-        keywords: String? = nil,
-        language: String? = nil,
+        keywords: Keywords? = nil,
+        language: DeepgramLanguage? = nil,
         measurements: Bool? = nil,
         model: String? = nil,
         multichannel: Bool? = nil,
@@ -177,5 +177,65 @@ public struct DeepgramQueryParameters: Codable {
         case utterances
         case uttSplit = "utt_split"
         case version
+    }
+}
+
+public enum DeepgramLanguage: String, Codable, CaseIterable {
+    case bulgarian = "bg"
+    case catalan = "ca"
+    case chineseMandarinSimplified = "zh"
+    case chineseMandarinTraditional = "zh-TW"
+    case czech = "cs"
+    case danish = "da"
+    case dutch = "nl"
+    case english = "en"
+    case estonian = "et"
+    case finnish = "fi"
+    case flemish = "nl-BE"
+    case french = "fr"
+    case german = "de"
+    case germanSwitzerland = "de-CH"
+    case greek = "el"
+    case hindi = "hi"
+    case hungarian = "hu"
+    case indonesian = "id"
+    case italian = "it"
+    case japanese = "ja"
+    case korean = "ko"
+    case latvian = "lv"
+    case lithuanian = "lt"
+    case malay = "ms"
+    case norwegian = "no"
+    case polish = "pl"
+    case portuguese = "pt"
+    case romanian = "ro"
+    case russian = "ru"
+    case slovak = "sk"
+    case spanish = "es"
+    case swedish = "sv"
+    case thai = "th"
+    case turkish = "tr"
+    case ukrainian = "uk"
+    case vietnamese = "vi"
+}
+
+// for string interpolation
+extension DeepgramLanguage: CustomStringConvertible {
+    public var description: String {
+        return self.rawValue
+    }
+}
+
+public struct Keywords: CustomStringConvertible, Codable, Equatable {
+    public var words: [String]
+    
+    public init(words: [String]) {
+        self.words = words
+    }
+    
+    public var description: String {
+        return words.enumerated().map { index, word in
+            index == 0 ? word : "&keywords=\(word)"
+        }.joined()
     }
 }

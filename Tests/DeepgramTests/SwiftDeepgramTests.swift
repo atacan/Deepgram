@@ -1,7 +1,7 @@
 import XCTest
-@testable import SwiftDeepgram
+@testable import Deepgram
 
-final class SwiftDeepgramTests: XCTestCase {
+final class DeepgramTests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest
