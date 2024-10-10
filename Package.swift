@@ -18,8 +18,10 @@ let package = Package(
         .library(name: "DeepgramDependency", targets: ["DeepgramDependency"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.2.1"),
+        .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.4.1"),
         .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.6.0"),
+        .package(path: "../WebSocketDependency"),
+        .package(path: "../AudioRecorder"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -29,6 +31,9 @@ let package = Package(
                 dependencies: [
                     "Deepgram",
                     .product(name: "Dependencies", package: "swift-dependencies"),
+                    .product(name: "DependenciesMacros", package: "swift-dependencies"),
+                    .product(name: "WebSocketDependency", package: "WebSocketDependency"),
+                    .product(name: "AudioDataStreamClient", package: "AudioRecorder"),
                 ]),
 
             .testTarget(name: "DeepgramTests",
