@@ -4,8 +4,8 @@
 
 import Foundation
 
-public struct DeepgramQueryParameters: Codable, Equatable {
-    /// Callback URL to provide if you would like your submitted audio to be processed asynchronously. 
+public struct DeepgramQueryParameters: Sendable, Codable, Equatable {
+    /// Callback URL to provide if you would like your submitted audio to be processed asynchronously.
     public var callback: String?
     /// Enable a callback method. Default: false
     public var callbackMethod: Bool?
@@ -220,13 +220,13 @@ public enum DeepgramLanguage: String, Codable, CaseIterable {
 }
 
 // for string interpolation
-extension DeepgramLanguage: CustomStringConvertible {
+extension DeepgramLanguage: Sendable, CustomStringConvertible {
     public var description: String {
         return self.rawValue
     }
 }
 
-public struct Keywords: CustomStringConvertible, Codable, Equatable {
+public struct Keywords: Sendable, CustomStringConvertible, Codable, Equatable {
     public var words: [String]
     
     public init(words: [String]) {
