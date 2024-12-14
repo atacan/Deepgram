@@ -20,8 +20,10 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.4.1"),
         .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.6.0"),
-        .package(path: "../WebSocketDependency"),
-        .package(path: "../AudioRecorder"),
+        .package(url: "git@github.com:atacan/WebSocketDependency.git", branch: "main"),
+        // .package(path: "../WebSocketDependency"),
+        .package(url: "git@github.com:atacan/AudioRecorder.git", branch: "main"),
+        // .package(path: "../AudioRecorder"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
