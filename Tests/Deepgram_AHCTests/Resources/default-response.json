@@ -1,0 +1,46 @@
+{
+    "metadata": {
+        "transaction_key": "deprecated",
+        "request_id": "1ceed1cc-6e94-475b-9174-8b76edb4ecf9",
+        "sha256": "9566bd19666f242dfe2165a892e8442d8c357d64d1469a475c16ad623b47e579",
+        "created": "2025-01-11T16:23:19.393Z",
+        "duration": 2.031375,
+        "channels": 1,
+        "models": [
+            "1ed36bac-f71c-4f3f-a31f-02fd6525c489"
+        ],
+        "model_info": {
+            "1ed36bac-f71c-4f3f-a31f-02fd6525c489": {
+                "name": "general",
+                "version": "2024-01-26.8851",
+                "arch": "base"
+            }
+        }
+    },
+    "results": {
+        "channels": [
+            {
+                "alternatives": [
+                    {
+                        "transcript": "amazing things",
+                        "confidence": 0.98779297,
+                        "words": [
+                            {
+                                "word": "amazing",
+                                "start": 0.7380769,
+                                "end": 1.1265385,
+                                "confidence": 0.99853516
+                            },
+                            {
+                                "word": "things",
+                                "start": 1.1265385,
+                                "end": 1.4373077,
+                                "confidence": 0.98779297
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
