@@ -578,109 +578,109 @@
               "type": "string"
             }
           }
-        ]
-      }
-    },
-    "responses": {
-      "200": {
-        "description": "Audio submitted for transcription.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "string",
-                  "example": "200 Success"
-                },
-                "message": {
-                  "type": "string",
-                  "example": "Audio submitted for transcription."
+        ],
+        "responses": {
+          "200": {
+            "description": "Audio submitted for transcription.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "200 Success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Audio submitted for transcription."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "error": {
+                          "type": "string",
+                          "example": "Unknown Model"
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "error": {
+                          "type": "string",
+                          "example": "Input Text Contained No Characters"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "error": {
+                          "type": "string",
+                          "example": "Request Body Exceeded 2MB"
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "error": {
+                          "type": "string",
+                          "example": "Input Text Exceeded Character Limit"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "err_code": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "err_msg": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "request_id": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
                 }
               }
             }
           }
-        }
-      },
-      "400": {
-        "description": "Bad Request",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "oneOf": [
-                {
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "example": "Unknown Model"
-                    }
-                  }
-                },
-                {
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "example": "Input Text Contained No Characters"
-                    }
-                  }
-                }
-              ]
-            }
-          }
-        }
-      },
-      "413": {
-        "description": "Payload Too Large",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "oneOf": [
-                {
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "example": "Request Body Exceeded 2MB"
-                    }
-                  }
-                },
-                {
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "example": "Input Text Exceeded Character Limit"
-                    }
-                  }
-                }
-              ]
-            }
-          }
-        }
-      },
-      "415": {
-        "description": "Unsupported Media Type",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "err_code": {
-                  "type": "string",
-                  "example": ""
-                },
-                "err_msg": {
-                  "type": "string",
-                  "example": ""
-                },
-                "request_id": {
-                  "type": "string",
-                  "example": ""
-                }
-              }
-            }
-          }
-        }
+        },
       }
     },
     "/v1/read": {
