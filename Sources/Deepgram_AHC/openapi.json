@@ -23,6 +23,7 @@
   "paths": {
     "/v1/listen": {
       "post": {
+        "operationId": "listen",
         "summary": "Transcribe and analyze pre-recorded audio or video",
         "parameters": [
           {

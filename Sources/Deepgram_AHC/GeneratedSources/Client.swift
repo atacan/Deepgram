@@ -41,11 +41,11 @@ public struct Client: APIProtocol {
     /// Transcribe and analyze pre-recorded audio or video
     ///
     /// - Remark: HTTP `POST /v1/listen`.
-    /// - Remark: Generated from `#/paths//v1/listen/post`.
-    public func post_sol_v1_sol_listen(_ input: Operations.post_sol_v1_sol_listen.Input) async throws -> Operations.post_sol_v1_sol_listen.Output {
+    /// - Remark: Generated from `#/paths//v1/listen/post(listen)`.
+    public func listen(_ input: Operations.listen.Input) async throws -> Operations.listen.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.post_sol_v1_sol_listen.id,
+            forOperation: Operations.listen.id,
             serializer: { input in
                 let path = try converter.renderedPath(
                     template: "/v1/listen",
@@ -318,7 +318,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 case 200:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.post_sol_v1_sol_listen.Output.Ok.Body
+                    let body: Operations.listen.Output.Ok.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -328,7 +328,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload.self,
+                            Operations.listen.Output.Ok.Body.jsonPayload.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -340,7 +340,7 @@ public struct Client: APIProtocol {
                     return .ok(.init(body: body))
                 case 400:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.post_sol_v1_sol_listen.Output.BadRequest.Body
+                    let body: Operations.listen.Output.BadRequest.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -350,7 +350,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Operations.post_sol_v1_sol_listen.Output.BadRequest.Body.jsonPayload.self,
+                            Operations.listen.Output.BadRequest.Body.jsonPayload.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -362,7 +362,7 @@ public struct Client: APIProtocol {
                     return .badRequest(.init(body: body))
                 case 401:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.post_sol_v1_sol_listen.Output.Unauthorized.Body
+                    let body: Operations.listen.Output.Unauthorized.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -372,7 +372,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Operations.post_sol_v1_sol_listen.Output.Unauthorized.Body.jsonPayload.self,
+                            Operations.listen.Output.Unauthorized.Body.jsonPayload.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -384,7 +384,7 @@ public struct Client: APIProtocol {
                     return .unauthorized(.init(body: body))
                 case 402:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.post_sol_v1_sol_listen.Output.Code402.Body
+                    let body: Operations.listen.Output.Code402.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -394,7 +394,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Operations.post_sol_v1_sol_listen.Output.Code402.Body.jsonPayload.self,
+                            Operations.listen.Output.Code402.Body.jsonPayload.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -406,7 +406,7 @@ public struct Client: APIProtocol {
                     return .code402(.init(body: body))
                 case 403:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.post_sol_v1_sol_listen.Output.Forbidden.Body
+                    let body: Operations.listen.Output.Forbidden.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -416,7 +416,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Operations.post_sol_v1_sol_listen.Output.Forbidden.Body.jsonPayload.self,
+                            Operations.listen.Output.Forbidden.Body.jsonPayload.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)

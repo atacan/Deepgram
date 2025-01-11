@@ -14,8 +14,8 @@ public protocol APIProtocol: Sendable {
     /// Transcribe and analyze pre-recorded audio or video
     ///
     /// - Remark: HTTP `POST /v1/listen`.
-    /// - Remark: Generated from `#/paths//v1/listen/post`.
-    func post_sol_v1_sol_listen(_ input: Operations.post_sol_v1_sol_listen.Input) async throws -> Operations.post_sol_v1_sol_listen.Output
+    /// - Remark: Generated from `#/paths//v1/listen/post(listen)`.
+    func listen(_ input: Operations.listen.Input) async throws -> Operations.listen.Output
     /// Text-to-speech API
     ///
     /// - Remark: HTTP `POST /v1/speak`.
@@ -217,12 +217,12 @@ extension APIProtocol {
     /// Transcribe and analyze pre-recorded audio or video
     ///
     /// - Remark: HTTP `POST /v1/listen`.
-    /// - Remark: Generated from `#/paths//v1/listen/post`.
-    public func post_sol_v1_sol_listen(
-        query: Operations.post_sol_v1_sol_listen.Input.Query = .init(),
-        headers: Operations.post_sol_v1_sol_listen.Input.Headers = .init()
-    ) async throws -> Operations.post_sol_v1_sol_listen.Output {
-        try await post_sol_v1_sol_listen(Operations.post_sol_v1_sol_listen.Input(
+    /// - Remark: Generated from `#/paths//v1/listen/post(listen)`.
+    public func listen(
+        query: Operations.listen.Input.Query = .init(),
+        headers: Operations.listen.Input.Headers = .init()
+    ) async throws -> Operations.listen.Output {
+        try await listen(Operations.listen.Input(
             query: query,
             headers: headers
         ))
@@ -719,9 +719,9 @@ public enum Operations {
     /// Transcribe and analyze pre-recorded audio or video
     ///
     /// - Remark: HTTP `POST /v1/listen`.
-    /// - Remark: Generated from `#/paths//v1/listen/post`.
-    public enum post_sol_v1_sol_listen {
-        public static let id: Swift.String = "post/v1/listen"
+    /// - Remark: Generated from `#/paths//v1/listen/post(listen)`.
+    public enum listen {
+        public static let id: Swift.String = "listen"
         public struct Input: Sendable, Hashable {
             /// - Remark: Generated from `#/paths/v1/listen/POST/query`.
             public struct Query: Sendable, Hashable {
@@ -984,27 +984,27 @@ public enum Operations {
                     self.version = version
                 }
             }
-            public var query: Operations.post_sol_v1_sol_listen.Input.Query
+            public var query: Operations.listen.Input.Query
             /// - Remark: Generated from `#/paths/v1/listen/POST/header`.
             public struct Headers: Sendable, Hashable {
-                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.post_sol_v1_sol_listen.AcceptableContentType>]
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.listen.AcceptableContentType>]
                 /// Creates a new `Headers`.
                 ///
                 /// - Parameters:
                 ///   - accept:
-                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.post_sol_v1_sol_listen.AcceptableContentType>] = .defaultValues()) {
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.listen.AcceptableContentType>] = .defaultValues()) {
                     self.accept = accept
                 }
             }
-            public var headers: Operations.post_sol_v1_sol_listen.Input.Headers
+            public var headers: Operations.listen.Input.Headers
             /// Creates a new `Input`.
             ///
             /// - Parameters:
             ///   - query:
             ///   - headers:
             public init(
-                query: Operations.post_sol_v1_sol_listen.Input.Query = .init(),
-                headers: Operations.post_sol_v1_sol_listen.Input.Headers = .init()
+                query: Operations.listen.Input.Query = .init(),
+                headers: Operations.listen.Input.Headers = .init()
             ) {
                 self.query = query
                 self.headers = headers
@@ -1076,7 +1076,7 @@ public enum Operations {
                             }
                         }
                         /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/metadata`.
-                        public var metadata: Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload.metadataPayload?
+                        public var metadata: Operations.listen.Output.Ok.Body.jsonPayload.metadataPayload?
                         /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results`.
                         public struct resultsPayload: Codable, Hashable, Sendable {
                             /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload`.
@@ -1123,9 +1123,9 @@ public enum Operations {
                                         }
                                     }
                                     /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/words`.
-                                    public typealias wordsPayload = [Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.wordsPayloadPayload]
+                                    public typealias wordsPayload = [Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.wordsPayloadPayload]
                                     /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/words`.
-                                    public var words: Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.wordsPayload?
+                                    public var words: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.wordsPayload?
                                     /// Creates a new `alternativesPayloadPayload`.
                                     ///
                                     /// - Parameters:
@@ -1135,7 +1135,7 @@ public enum Operations {
                                     public init(
                                         transcript: Swift.String? = nil,
                                         confidence: Swift.Double? = nil,
-                                        words: Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.wordsPayload? = nil
+                                        words: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.wordsPayload? = nil
                                     ) {
                                         self.transcript = transcript
                                         self.confidence = confidence
@@ -1148,14 +1148,14 @@ public enum Operations {
                                     }
                                 }
                                 /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternatives`.
-                                public typealias alternativesPayload = [Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload]
+                                public typealias alternativesPayload = [Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload]
                                 /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternatives`.
-                                public var alternatives: Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayload?
+                                public var alternatives: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayload?
                                 /// Creates a new `channelsPayloadPayload`.
                                 ///
                                 /// - Parameters:
                                 ///   - alternatives:
-                                public init(alternatives: Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayload? = nil) {
+                                public init(alternatives: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayload? = nil) {
                                     self.alternatives = alternatives
                                 }
                                 public enum CodingKeys: String, CodingKey {
@@ -1163,14 +1163,14 @@ public enum Operations {
                                 }
                             }
                             /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channels`.
-                            public typealias channelsPayload = [Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload]
+                            public typealias channelsPayload = [Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload]
                             /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channels`.
-                            public var channels: Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayload?
+                            public var channels: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayload?
                             /// Creates a new `resultsPayload`.
                             ///
                             /// - Parameters:
                             ///   - channels:
-                            public init(channels: Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayload? = nil) {
+                            public init(channels: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayload? = nil) {
                                 self.channels = channels
                             }
                             public enum CodingKeys: String, CodingKey {
@@ -1178,15 +1178,15 @@ public enum Operations {
                             }
                         }
                         /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results`.
-                        public var results: Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload.resultsPayload?
+                        public var results: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload?
                         /// Creates a new `jsonPayload`.
                         ///
                         /// - Parameters:
                         ///   - metadata:
                         ///   - results:
                         public init(
-                            metadata: Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload.metadataPayload? = nil,
-                            results: Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload.resultsPayload? = nil
+                            metadata: Operations.listen.Output.Ok.Body.jsonPayload.metadataPayload? = nil,
+                            results: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload? = nil
                         ) {
                             self.metadata = metadata
                             self.results = results
@@ -1197,12 +1197,12 @@ public enum Operations {
                         }
                     }
                     /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/application\/json`.
-                    case json(Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload)
+                    case json(Operations.listen.Output.Ok.Body.jsonPayload)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    public var json: Operations.post_sol_v1_sol_listen.Output.Ok.Body.jsonPayload {
+                    public var json: Operations.listen.Output.Ok.Body.jsonPayload {
                         get throws {
                             switch self {
                             case let .json(body):
@@ -1212,26 +1212,26 @@ public enum Operations {
                     }
                 }
                 /// Received HTTP response body
-                public var body: Operations.post_sol_v1_sol_listen.Output.Ok.Body
+                public var body: Operations.listen.Output.Ok.Body
                 /// Creates a new `Ok`.
                 ///
                 /// - Parameters:
                 ///   - body: Received HTTP response body
-                public init(body: Operations.post_sol_v1_sol_listen.Output.Ok.Body) {
+                public init(body: Operations.listen.Output.Ok.Body) {
                     self.body = body
                 }
             }
             /// Successful response
             ///
-            /// - Remark: Generated from `#/paths//v1/listen/post/responses/200`.
+            /// - Remark: Generated from `#/paths//v1/listen/post(listen)/responses/200`.
             ///
             /// HTTP response code: `200 ok`.
-            case ok(Operations.post_sol_v1_sol_listen.Output.Ok)
+            case ok(Operations.listen.Output.Ok)
             /// The associated value of the enum case if `self` is `.ok`.
             ///
             /// - Throws: An error if `self` is not `.ok`.
             /// - SeeAlso: `.ok`.
-            public var ok: Operations.post_sol_v1_sol_listen.Output.Ok {
+            public var ok: Operations.listen.Output.Ok {
                 get throws {
                     switch self {
                     case let .ok(response):
@@ -1277,12 +1277,12 @@ public enum Operations {
                         }
                     }
                     /// - Remark: Generated from `#/paths/v1/listen/POST/responses/400/content/application\/json`.
-                    case json(Operations.post_sol_v1_sol_listen.Output.BadRequest.Body.jsonPayload)
+                    case json(Operations.listen.Output.BadRequest.Body.jsonPayload)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    public var json: Operations.post_sol_v1_sol_listen.Output.BadRequest.Body.jsonPayload {
+                    public var json: Operations.listen.Output.BadRequest.Body.jsonPayload {
                         get throws {
                             switch self {
                             case let .json(body):
@@ -1292,26 +1292,26 @@ public enum Operations {
                     }
                 }
                 /// Received HTTP response body
-                public var body: Operations.post_sol_v1_sol_listen.Output.BadRequest.Body
+                public var body: Operations.listen.Output.BadRequest.Body
                 /// Creates a new `BadRequest`.
                 ///
                 /// - Parameters:
                 ///   - body: Received HTTP response body
-                public init(body: Operations.post_sol_v1_sol_listen.Output.BadRequest.Body) {
+                public init(body: Operations.listen.Output.BadRequest.Body) {
                     self.body = body
                 }
             }
             /// Bad Request
             ///
-            /// - Remark: Generated from `#/paths//v1/listen/post/responses/400`.
+            /// - Remark: Generated from `#/paths//v1/listen/post(listen)/responses/400`.
             ///
             /// HTTP response code: `400 badRequest`.
-            case badRequest(Operations.post_sol_v1_sol_listen.Output.BadRequest)
+            case badRequest(Operations.listen.Output.BadRequest)
             /// The associated value of the enum case if `self` is `.badRequest`.
             ///
             /// - Throws: An error if `self` is not `.badRequest`.
             /// - SeeAlso: `.badRequest`.
-            public var badRequest: Operations.post_sol_v1_sol_listen.Output.BadRequest {
+            public var badRequest: Operations.listen.Output.BadRequest {
                 get throws {
                     switch self {
                     case let .badRequest(response):
@@ -1357,12 +1357,12 @@ public enum Operations {
                         }
                     }
                     /// - Remark: Generated from `#/paths/v1/listen/POST/responses/401/content/application\/json`.
-                    case json(Operations.post_sol_v1_sol_listen.Output.Unauthorized.Body.jsonPayload)
+                    case json(Operations.listen.Output.Unauthorized.Body.jsonPayload)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    public var json: Operations.post_sol_v1_sol_listen.Output.Unauthorized.Body.jsonPayload {
+                    public var json: Operations.listen.Output.Unauthorized.Body.jsonPayload {
                         get throws {
                             switch self {
                             case let .json(body):
@@ -1372,26 +1372,26 @@ public enum Operations {
                     }
                 }
                 /// Received HTTP response body
-                public var body: Operations.post_sol_v1_sol_listen.Output.Unauthorized.Body
+                public var body: Operations.listen.Output.Unauthorized.Body
                 /// Creates a new `Unauthorized`.
                 ///
                 /// - Parameters:
                 ///   - body: Received HTTP response body
-                public init(body: Operations.post_sol_v1_sol_listen.Output.Unauthorized.Body) {
+                public init(body: Operations.listen.Output.Unauthorized.Body) {
                     self.body = body
                 }
             }
             /// Unauthorized
             ///
-            /// - Remark: Generated from `#/paths//v1/listen/post/responses/401`.
+            /// - Remark: Generated from `#/paths//v1/listen/post(listen)/responses/401`.
             ///
             /// HTTP response code: `401 unauthorized`.
-            case unauthorized(Operations.post_sol_v1_sol_listen.Output.Unauthorized)
+            case unauthorized(Operations.listen.Output.Unauthorized)
             /// The associated value of the enum case if `self` is `.unauthorized`.
             ///
             /// - Throws: An error if `self` is not `.unauthorized`.
             /// - SeeAlso: `.unauthorized`.
-            public var unauthorized: Operations.post_sol_v1_sol_listen.Output.Unauthorized {
+            public var unauthorized: Operations.listen.Output.Unauthorized {
                 get throws {
                     switch self {
                     case let .unauthorized(response):
@@ -1437,12 +1437,12 @@ public enum Operations {
                         }
                     }
                     /// - Remark: Generated from `#/paths/v1/listen/POST/responses/402/content/application\/json`.
-                    case json(Operations.post_sol_v1_sol_listen.Output.Code402.Body.jsonPayload)
+                    case json(Operations.listen.Output.Code402.Body.jsonPayload)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    public var json: Operations.post_sol_v1_sol_listen.Output.Code402.Body.jsonPayload {
+                    public var json: Operations.listen.Output.Code402.Body.jsonPayload {
                         get throws {
                             switch self {
                             case let .json(body):
@@ -1452,26 +1452,26 @@ public enum Operations {
                     }
                 }
                 /// Received HTTP response body
-                public var body: Operations.post_sol_v1_sol_listen.Output.Code402.Body
+                public var body: Operations.listen.Output.Code402.Body
                 /// Creates a new `Code402`.
                 ///
                 /// - Parameters:
                 ///   - body: Received HTTP response body
-                public init(body: Operations.post_sol_v1_sol_listen.Output.Code402.Body) {
+                public init(body: Operations.listen.Output.Code402.Body) {
                     self.body = body
                 }
             }
             /// Payment Required
             ///
-            /// - Remark: Generated from `#/paths//v1/listen/post/responses/402`.
+            /// - Remark: Generated from `#/paths//v1/listen/post(listen)/responses/402`.
             ///
             /// HTTP response code: `402 code402`.
-            case code402(Operations.post_sol_v1_sol_listen.Output.Code402)
+            case code402(Operations.listen.Output.Code402)
             /// The associated value of the enum case if `self` is `.code402`.
             ///
             /// - Throws: An error if `self` is not `.code402`.
             /// - SeeAlso: `.code402`.
-            public var code402: Operations.post_sol_v1_sol_listen.Output.Code402 {
+            public var code402: Operations.listen.Output.Code402 {
                 get throws {
                     switch self {
                     case let .code402(response):
@@ -1517,12 +1517,12 @@ public enum Operations {
                         }
                     }
                     /// - Remark: Generated from `#/paths/v1/listen/POST/responses/403/content/application\/json`.
-                    case json(Operations.post_sol_v1_sol_listen.Output.Forbidden.Body.jsonPayload)
+                    case json(Operations.listen.Output.Forbidden.Body.jsonPayload)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    public var json: Operations.post_sol_v1_sol_listen.Output.Forbidden.Body.jsonPayload {
+                    public var json: Operations.listen.Output.Forbidden.Body.jsonPayload {
                         get throws {
                             switch self {
                             case let .json(body):
@@ -1532,26 +1532,26 @@ public enum Operations {
                     }
                 }
                 /// Received HTTP response body
-                public var body: Operations.post_sol_v1_sol_listen.Output.Forbidden.Body
+                public var body: Operations.listen.Output.Forbidden.Body
                 /// Creates a new `Forbidden`.
                 ///
                 /// - Parameters:
                 ///   - body: Received HTTP response body
-                public init(body: Operations.post_sol_v1_sol_listen.Output.Forbidden.Body) {
+                public init(body: Operations.listen.Output.Forbidden.Body) {
                     self.body = body
                 }
             }
             /// Forbidden
             ///
-            /// - Remark: Generated from `#/paths//v1/listen/post/responses/403`.
+            /// - Remark: Generated from `#/paths//v1/listen/post(listen)/responses/403`.
             ///
             /// HTTP response code: `403 forbidden`.
-            case forbidden(Operations.post_sol_v1_sol_listen.Output.Forbidden)
+            case forbidden(Operations.listen.Output.Forbidden)
             /// The associated value of the enum case if `self` is `.forbidden`.
             ///
             /// - Throws: An error if `self` is not `.forbidden`.
             /// - SeeAlso: `.forbidden`.
-            public var forbidden: Operations.post_sol_v1_sol_listen.Output.Forbidden {
+            public var forbidden: Operations.listen.Output.Forbidden {
                 get throws {
                     switch self {
                     case let .forbidden(response):
