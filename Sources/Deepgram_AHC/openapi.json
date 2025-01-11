@@ -1189,7 +1189,7 @@
         }
       }
     },
-    "/v1/projects/{project_id}/models/{modelId}": {
+    "/v1/projects/{project_id}/models/{model_id}": {
       "get": {
         "summary": "Retrieve information about a specific model",
         "parameters": [
@@ -2969,7 +2969,7 @@
         }
       }
     },
-    "/v1/models/{modelId}": {
+    "/v1/models/{model_uuid}": {
       "get": {
         "summary": "Get Model",
         "description": "Returns the metadata for a specific model. If the model is not found, a 404 error is returned. This endpoint works for public models only.",

@@ -53,9 +53,9 @@ public protocol APIProtocol: Sendable {
     func get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models(_ input: Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models.Input) async throws -> Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models.Output
     /// Retrieve information about a specific model
     ///
-    /// - Remark: HTTP `GET /v1/projects/{project_id}/models/{modelId}`.
-    /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{modelId}/get`.
-    func get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_(_ input: Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_.Input) async throws -> Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_.Output
+    /// - Remark: HTTP `GET /v1/projects/{project_id}/models/{model_id}`.
+    /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{model_id}/get`.
+    func get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_(_ input: Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_.Input) async throws -> Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_.Output
     /// List all keys for a specific project
     ///
     /// - Remark: HTTP `GET /v1/projects/{project_id}/keys`.
@@ -179,8 +179,8 @@ public protocol APIProtocol: Sendable {
     ///
     /// Returns the metadata for a specific model. If the model is not found, a 404 error is returned. This endpoint works for public models only.
     ///
-    /// - Remark: HTTP `GET /v1/models/{modelId}`.
-    /// - Remark: Generated from `#/paths//v1/models/{modelId}/get(getModel)`.
+    /// - Remark: HTTP `GET /v1/models/{model_uuid}`.
+    /// - Remark: Generated from `#/paths//v1/models/{model_uuid}/get(getModel)`.
     func getModel(_ input: Operations.getModel.Input) async throws -> Operations.getModel.Output
     /// List Credentials
     ///
@@ -320,10 +320,10 @@ extension APIProtocol {
     }
     /// Retrieve information about a specific model
     ///
-    /// - Remark: HTTP `GET /v1/projects/{project_id}/models/{modelId}`.
-    /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{modelId}/get`.
-    public func get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_(path: Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_.Input.Path) async throws -> Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_.Output {
-        try await get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_(Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_.Input(path: path))
+    /// - Remark: HTTP `GET /v1/projects/{project_id}/models/{model_id}`.
+    /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{model_id}/get`.
+    public func get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_(path: Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_.Input.Path) async throws -> Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_.Output {
+        try await get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_(Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_.Input(path: path))
     }
     /// List all keys for a specific project
     ///
@@ -606,8 +606,8 @@ extension APIProtocol {
     ///
     /// Returns the metadata for a specific model. If the model is not found, a 404 error is returned. This endpoint works for public models only.
     ///
-    /// - Remark: HTTP `GET /v1/models/{modelId}`.
-    /// - Remark: Generated from `#/paths//v1/models/{modelId}/get(getModel)`.
+    /// - Remark: HTTP `GET /v1/models/{model_uuid}`.
+    /// - Remark: Generated from `#/paths//v1/models/{model_uuid}/get(getModel)`.
     public func getModel(
         path: Operations.getModel.Input.Path,
         headers: Operations.getModel.Input.Headers = .init()
@@ -4001,20 +4001,20 @@ public enum Operations {
     }
     /// Retrieve information about a specific model
     ///
-    /// - Remark: HTTP `GET /v1/projects/{project_id}/models/{modelId}`.
-    /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{modelId}/get`.
-    public enum get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_ {
-        public static let id: Swift.String = "get/v1/projects/{project_id}/models/{modelId}"
+    /// - Remark: HTTP `GET /v1/projects/{project_id}/models/{model_id}`.
+    /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{model_id}/get`.
+    public enum get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_ {
+        public static let id: Swift.String = "get/v1/projects/{project_id}/models/{model_id}"
         public struct Input: Sendable, Hashable {
-            /// - Remark: Generated from `#/paths/v1/projects/{project_id}/models/{modelId}/GET/path`.
+            /// - Remark: Generated from `#/paths/v1/projects/{project_id}/models/{model_id}/GET/path`.
             public struct Path: Sendable, Hashable {
                 /// Unique identifier of the project for which you want to retrieve information. (UUID)
                 ///
-                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/models/{modelId}/GET/path/project_id`.
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/models/{model_id}/GET/path/project_id`.
                 public var project_id: Swift.String
                 /// Unique identifier of the model for which you want to retrieve information. (UUID)
                 ///
-                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/models/{modelId}/GET/path/model_id`.
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/models/{model_id}/GET/path/model_id`.
                 public var model_id: Swift.String
                 /// Creates a new `Path`.
                 ///
@@ -4029,12 +4029,12 @@ public enum Operations {
                     self.model_id = model_id
                 }
             }
-            public var path: Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_.Input.Path
+            public var path: Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_.Input.Path
             /// Creates a new `Input`.
             ///
             /// - Parameters:
             ///   - path:
-            public init(path: Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_.Input.Path) {
+            public init(path: Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_.Input.Path) {
                 self.path = path
             }
         }
@@ -4045,13 +4045,13 @@ public enum Operations {
             }
             /// Successful response
             ///
-            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{modelId}/get/responses/200`.
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{model_id}/get/responses/200`.
             ///
             /// HTTP response code: `200 ok`.
-            case ok(Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_.Output.Ok)
+            case ok(Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_.Output.Ok)
             /// Successful response
             ///
-            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{modelId}/get/responses/200`.
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{model_id}/get/responses/200`.
             ///
             /// HTTP response code: `200 ok`.
             public static var ok: Self {
@@ -4061,7 +4061,7 @@ public enum Operations {
             ///
             /// - Throws: An error if `self` is not `.ok`.
             /// - SeeAlso: `.ok`.
-            public var ok: Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_.Output.Ok {
+            public var ok: Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_.Output.Ok {
                 get throws {
                     switch self {
                     case let .ok(response):
@@ -4080,13 +4080,13 @@ public enum Operations {
             }
             /// Bad Request
             ///
-            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{modelId}/get/responses/400`.
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{model_id}/get/responses/400`.
             ///
             /// HTTP response code: `400 badRequest`.
-            case badRequest(Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_.Output.BadRequest)
+            case badRequest(Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_.Output.BadRequest)
             /// Bad Request
             ///
-            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{modelId}/get/responses/400`.
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{model_id}/get/responses/400`.
             ///
             /// HTTP response code: `400 badRequest`.
             public static var badRequest: Self {
@@ -4096,7 +4096,7 @@ public enum Operations {
             ///
             /// - Throws: An error if `self` is not `.badRequest`.
             /// - SeeAlso: `.badRequest`.
-            public var badRequest: Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_modelId_rcub_.Output.BadRequest {
+            public var badRequest: Operations.get_sol_v1_sol_projects_sol__lcub_project_id_rcub__sol_models_sol__lcub_model_id_rcub_.Output.BadRequest {
                 get throws {
                     switch self {
                     case let .badRequest(response):
@@ -10679,16 +10679,16 @@ public enum Operations {
     ///
     /// Returns the metadata for a specific model. If the model is not found, a 404 error is returned. This endpoint works for public models only.
     ///
-    /// - Remark: HTTP `GET /v1/models/{modelId}`.
-    /// - Remark: Generated from `#/paths//v1/models/{modelId}/get(getModel)`.
+    /// - Remark: HTTP `GET /v1/models/{model_uuid}`.
+    /// - Remark: Generated from `#/paths//v1/models/{model_uuid}/get(getModel)`.
     public enum getModel {
         public static let id: Swift.String = "getModel"
         public struct Input: Sendable, Hashable {
-            /// - Remark: Generated from `#/paths/v1/models/{modelId}/GET/path`.
+            /// - Remark: Generated from `#/paths/v1/models/{model_uuid}/GET/path`.
             public struct Path: Sendable, Hashable {
                 /// The specific UUID of the model.
                 ///
-                /// - Remark: Generated from `#/paths/v1/models/{modelId}/GET/path/model_uuid`.
+                /// - Remark: Generated from `#/paths/v1/models/{model_uuid}/GET/path/model_uuid`.
                 public var model_uuid: Swift.String
                 /// Creates a new `Path`.
                 ///
@@ -10699,7 +10699,7 @@ public enum Operations {
                 }
             }
             public var path: Operations.getModel.Input.Path
-            /// - Remark: Generated from `#/paths/v1/models/{modelId}/GET/header`.
+            /// - Remark: Generated from `#/paths/v1/models/{model_uuid}/GET/header`.
             public struct Headers: Sendable, Hashable {
                 public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getModel.AcceptableContentType>]
                 /// Creates a new `Headers`.
@@ -10731,13 +10731,13 @@ public enum Operations {
             }
             /// Returns the metadata for the specified model.
             ///
-            /// - Remark: Generated from `#/paths//v1/models/{modelId}/get(getModel)/responses/200`.
+            /// - Remark: Generated from `#/paths//v1/models/{model_uuid}/get(getModel)/responses/200`.
             ///
             /// HTTP response code: `200 ok`.
             case ok(Operations.getModel.Output.Ok)
             /// Returns the metadata for the specified model.
             ///
-            /// - Remark: Generated from `#/paths//v1/models/{modelId}/get(getModel)/responses/200`.
+            /// - Remark: Generated from `#/paths//v1/models/{model_uuid}/get(getModel)/responses/200`.
             ///
             /// HTTP response code: `200 ok`.
             public static var ok: Self {
@@ -10766,13 +10766,13 @@ public enum Operations {
             }
             /// Bad request due to invalid input or parameters.
             ///
-            /// - Remark: Generated from `#/paths//v1/models/{modelId}/get(getModel)/responses/400`.
+            /// - Remark: Generated from `#/paths//v1/models/{model_uuid}/get(getModel)/responses/400`.
             ///
             /// HTTP response code: `400 badRequest`.
             case badRequest(Operations.getModel.Output.BadRequest)
             /// Bad request due to invalid input or parameters.
             ///
-            /// - Remark: Generated from `#/paths//v1/models/{modelId}/get(getModel)/responses/400`.
+            /// - Remark: Generated from `#/paths//v1/models/{model_uuid}/get(getModel)/responses/400`.
             ///
             /// HTTP response code: `400 badRequest`.
             public static var badRequest: Self {
@@ -10796,9 +10796,9 @@ public enum Operations {
                 }
             }
             public struct NotFound: Sendable, Hashable {
-                /// - Remark: Generated from `#/paths/v1/models/{modelId}/GET/responses/404/content`.
+                /// - Remark: Generated from `#/paths/v1/models/{model_uuid}/GET/responses/404/content`.
                 @frozen public enum Body: Sendable, Hashable {
-                    /// - Remark: Generated from `#/paths/v1/models/{modelId}/GET/responses/404/content/application\/json`.
+                    /// - Remark: Generated from `#/paths/v1/models/{model_uuid}/GET/responses/404/content/application\/json`.
                     case json(OpenAPIRuntime.OpenAPIObjectContainer)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
@@ -10825,7 +10825,7 @@ public enum Operations {
             }
             /// The specified model was not found.
             ///
-            /// - Remark: Generated from `#/paths//v1/models/{modelId}/get(getModel)/responses/404`.
+            /// - Remark: Generated from `#/paths//v1/models/{model_uuid}/get(getModel)/responses/404`.
             ///
             /// HTTP response code: `404 notFound`.
             case notFound(Operations.getModel.Output.NotFound)
