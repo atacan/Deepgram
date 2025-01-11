@@ -1194,25 +1194,122 @@ public enum Operations {
                                     public typealias wordsPayload = [Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.wordsPayloadPayload]
                                     /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/words`.
                                     public var words: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.wordsPayload?
+                                    /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs`.
+                                    public struct paragraphsPayload: Codable, Hashable, Sendable {
+                                        /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/transcript`.
+                                        public var transcript: Swift.String?
+                                        /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphsPayload`.
+                                        public struct paragraphsPayloadPayload: Codable, Hashable, Sendable {
+                                            /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphsPayload/num_words`.
+                                            public var num_words: Swift.Int?
+                                            /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphsPayload/start`.
+                                            public var start: Swift.Double?
+                                            /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphsPayload/end`.
+                                            public var end: Swift.Double?
+                                            /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphsPayload/sentencesPayload`.
+                                            public struct sentencesPayloadPayload: Codable, Hashable, Sendable {
+                                                /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphsPayload/sentencesPayload/text`.
+                                                public var text: Swift.String?
+                                                /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphsPayload/sentencesPayload/start`.
+                                                public var start: Swift.Double?
+                                                /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphsPayload/sentencesPayload/end`.
+                                                public var end: Swift.Double?
+                                                /// Creates a new `sentencesPayloadPayload`.
+                                                ///
+                                                /// - Parameters:
+                                                ///   - text:
+                                                ///   - start:
+                                                ///   - end:
+                                                public init(
+                                                    text: Swift.String? = nil,
+                                                    start: Swift.Double? = nil,
+                                                    end: Swift.Double? = nil
+                                                ) {
+                                                    self.text = text
+                                                    self.start = start
+                                                    self.end = end
+                                                }
+                                                public enum CodingKeys: String, CodingKey {
+                                                    case text
+                                                    case start
+                                                    case end
+                                                }
+                                            }
+                                            /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphsPayload/sentences`.
+                                            public typealias sentencesPayload = [Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.paragraphsPayload.paragraphsPayloadPayload.sentencesPayloadPayload]
+                                            /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphsPayload/sentences`.
+                                            public var sentences: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.paragraphsPayload.paragraphsPayloadPayload.sentencesPayload?
+                                            /// Creates a new `paragraphsPayloadPayload`.
+                                            ///
+                                            /// - Parameters:
+                                            ///   - num_words:
+                                            ///   - start:
+                                            ///   - end:
+                                            ///   - sentences:
+                                            public init(
+                                                num_words: Swift.Int? = nil,
+                                                start: Swift.Double? = nil,
+                                                end: Swift.Double? = nil,
+                                                sentences: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.paragraphsPayload.paragraphsPayloadPayload.sentencesPayload? = nil
+                                            ) {
+                                                self.num_words = num_words
+                                                self.start = start
+                                                self.end = end
+                                                self.sentences = sentences
+                                            }
+                                            public enum CodingKeys: String, CodingKey {
+                                                case num_words
+                                                case start
+                                                case end
+                                                case sentences
+                                            }
+                                        }
+                                        /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphs`.
+                                        public typealias paragraphsPayload = [Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.paragraphsPayload.paragraphsPayloadPayload]
+                                        /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphs`.
+                                        public var paragraphs: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.paragraphsPayload.paragraphsPayload?
+                                        /// Creates a new `paragraphsPayload`.
+                                        ///
+                                        /// - Parameters:
+                                        ///   - transcript:
+                                        ///   - paragraphs:
+                                        public init(
+                                            transcript: Swift.String? = nil,
+                                            paragraphs: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.paragraphsPayload.paragraphsPayload? = nil
+                                        ) {
+                                            self.transcript = transcript
+                                            self.paragraphs = paragraphs
+                                        }
+                                        public enum CodingKeys: String, CodingKey {
+                                            case transcript
+                                            case paragraphs
+                                        }
+                                    }
+                                    /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs`.
+                                    public var paragraphs: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.paragraphsPayload?
                                     /// Creates a new `alternativesPayloadPayload`.
                                     ///
                                     /// - Parameters:
                                     ///   - transcript:
                                     ///   - confidence:
                                     ///   - words:
+                                    ///   - paragraphs:
                                     public init(
                                         transcript: Swift.String? = nil,
                                         confidence: Swift.Double? = nil,
-                                        words: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.wordsPayload? = nil
+                                        words: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.wordsPayload? = nil,
+                                        paragraphs: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.paragraphsPayload? = nil
                                     ) {
                                         self.transcript = transcript
                                         self.confidence = confidence
                                         self.words = words
+                                        self.paragraphs = paragraphs
                                     }
                                     public enum CodingKeys: String, CodingKey {
                                         case transcript
                                         case confidence
                                         case words
+                                        case paragraphs
                                     }
                                 }
                                 /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternatives`.

@@ -509,6 +509,34 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "paragraphs": {
+                                      "type": "object",
+                                      "properties": {
+                                        "transcript": { "type": "string" },
+                                        "paragraphs": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "num_words": { "type": "integer" },
+                                              "start": { "type": "number" },
+                                              "end": { "type": "number" },
+                                              "sentences": {
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "text": { "type": "string" },
+                                                    "start": { "type": "number" },
+                                                    "end": { "type": "number" }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
                                     }
                                   }
                                 }

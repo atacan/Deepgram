@@ -29,7 +29,7 @@ final class Deepgram_AHCTests {
         let audioData = try Data(contentsOf: audioFileUrl)
 
         let response = try await client.listen(Operations.listen.Input(
-            query: .init(language: .en_hyphen_GB),
+            query: .init(language: .en_hyphen_GB, paragraphs: true),
             body: .binary(.init(audioData))
         ))
 
