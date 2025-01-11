@@ -10,6 +10,16 @@
       "url": "https://api.deepgram.com"
     }
   ],
+  "components": {
+    "securitySchemes": {
+      "Authorization": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Bearer token for API authentication"
+      }
+    }
+  },
   "paths": {
     "/v1/listen": {
       "post": {
@@ -1144,7 +1154,7 @@
         }
       }
     },
-    "/v1/projects/{project}/models": {
+    "/v1/projects/{project_id}/models": {
       "get": {
         "summary": "Retrieve models available to a specific project",
         "parameters": [
