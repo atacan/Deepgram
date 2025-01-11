@@ -1,0 +1,3399 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Deepgram API",
+    "description": "API for Deepgram providing speech-to-text services with various customization options.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.deepgram.com"
+    }
+  ],
+  "paths": {
+    "/v1/listen": {
+      "post": {
+        "summary": "Transcribe and analyze pre-recorded audio or video",
+        "parameters": [
+          {
+            "name": "callback",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Callback URL to provide if you would like your submitted audio to be processed asynchronously."
+          },
+          {
+            "name": "callback_method",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Enable a callback method. Default: false"
+          },
+          {
+            "name": "channels",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "description": "Number of independent audio channels contained in submitted audio. Only read when a value is provided for encoding."
+          },
+          {
+            "name": "custom_topic",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "A custom topic you want the model to detect within your input audio if present. Submit up to one hundred topics."
+          },
+          {
+            "name": "custom_topic_mode",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "extended"
+            },
+            "description": "When `strict`, the model will only return topics submitted using the `custom_topic` param. When `extended`, the model will return its own detected topics in addition to those submitted using the `custom_topic` param."
+          },
+          {
+            "name": "diarize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Recognize speaker changes. Each word in the transcript will be assigned a speaker number starting at 0. Default: false."
+          },
+          {
+            "name": "diarize_version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Version of the diarization feature to use. Only used when the diarization feature is enabled (`diarize=true`)."
+          },
+          {
+            "name": "dictation",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Spoken dictation commands will be converted to their corresponding punctuation marks. e.g., comma to , Default: false."
+          },
+          {
+            "name": "detect_entities",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Entity Detection identifies and extracts key entities from content in submitted audio. Default: false."
+          },
+          {
+            "name": "detect_language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Detect the language of the provided audio. Default: false."
+          },
+          {
+            "name": "detect_topics",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Identify and extract key topics. Default: false."
+          },
+          {
+            "name": "encoding",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Expected encoding of the submitted audio. If this parameter is set, `sample_rate` must also be specified."
+          },
+          {
+            "name": "extra",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "To add an extra parameter in the query string and pass a key-value pair you would like to include in the response."
+          },
+          {
+            "name": "filler_words",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Whether to include words like 'uh' and 'um' in transcription output. Default: false."
+          },
+          {
+            "name": "intents",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "Recognizes speaker intent throughout an entire transcript. Returns a list of text segments and the intents found within each segment."
+          },
+          {
+            "name": "keywords",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Uncommon proper nouns or other words to transcribe that are not a part of the model's vocabulary. Can send multiple instances in query string."
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "en"
+            },
+            "description": "The BCP-47 language tag that hints at the primary spoken language. Default: en."
+          },
+          {
+            "name": "measurements",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Spoken measurements will be converted to their corresponding abbreviations. e.g., milligram to mg. Default: false."
+          },
+          {
+            "name": "model",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "base-general"
+            },
+            "description": "AI model used to process submitted audio. Default: base-general."
+          },
+          {
+            "name": "multichannel",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Transcribe each audio channel independently. Default: false."
+          },
+          {
+            "name": "numerals",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Convert numbers from written format (e.g., one) to numerical format (e.g., 1). Default: false."
+          },
+          {
+            "name": "paragraphs",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Split audio into paragraphs. Default: false."
+          },
+          {
+            "name": "profanity_filter",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Remove profanity from the transcript. Default: false."
+          },
+          {
+            "name": "punctuate",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Add punctuation and capitalization to the transcript. Default: false."
+          },
+          {
+            "name": "redact",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Redact sensitive information, replacing redacted content with asterisks (*). Can send multiple instances in query string."
+          },
+          {
+            "name": "replace",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Terms or phrases to search for in the submitted audio and replace. Can send multiple instances in query string."
+          },
+          {
+            "name": "sample_rate",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "description": "Sample rate of submitted audio. Required (and only read) when a value is provided for encoding."
+          },
+          {
+            "name": "smart_format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Apply formatting to transcript output. When set to true, additional formatting will be applied to transcripts to improve readability. Default: false."
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Terms or phrases to search for in the submitted audio. Can send multiple instances in query string."
+          },
+          {
+            "name": "sentiment",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "Recognizes the sentiment of the entire transcript and detects a shift in sentiment throughout the transcript. Returns a list of text segments and the sentiment found within each segment."
+          },
+          {
+            "name": "summarize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "v2"
+            },
+            "description": "Summarize content. Default: v2."
+          },
+          {
+            "name": "tag",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Tag to associate with the request."
+          },
+          {
+            "name": "topics",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "Detects topics throughout an entire transcript. Returns a list of text segments and the topics found within each segment."
+          },
+          {
+            "name": "utterances",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Segment speech into meaningful units based on gaps in speech. Default: false."
+          },
+          {
+            "name": "utt_split",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "default": 0.8
+            },
+            "description": "Length of time in seconds used to split utterances. Default: 0.8."
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "latest"
+            },
+            "description": "Version of the model to use. Default: latest."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "transaction_key": { "type": "string" },
+                        "request_id": { "type": "string" },
+                        "sha256": { "type": "string" },
+                        "created": { "type": "string" },
+                        "duration": { "type": "number", "default": 0 },
+                        "channels": { "type": "integer", "default": 0 },
+                        "models": {
+                          "type": "array",
+                          "items": { "type": "string" }
+                        },
+                        "model_info": {
+                          "type": "object"
+                        }
+                      }
+                    },
+                    "results": {
+                      "type": "object",
+                      "properties": {
+                        "channels": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "alternatives": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "transcript": { "type": "string" },
+                                    "confidence": {
+                                      "type": "number",
+                                      "default": 0
+                                    },
+                                    "words": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "word": { "type": "string" },
+                                          "start": {
+                                            "type": "number",
+                                            "default": 0
+                                          },
+                                          "end": {
+                                            "type": "number",
+                                            "default": 0
+                                          },
+                                          "confidence": {
+                                            "type": "number",
+                                            "default": 0
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "err_code": { "type": "string" },
+                    "err_msg": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "err_code": { "type": "string" },
+                    "err_msg": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "err_code": { "type": "string" },
+                    "err_msg": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "err_code": { "type": "string" },
+                    "err_msg": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/speak": {
+      "post": {
+        "summary": "Text-to-speech API",
+        "parameters": [
+          {
+            "name": "bit_rate",
+            "in": "query",
+            "description": "Specifies the bitrate of the audio output. Learn More.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "Callback URL to provide if you would like your submitted text to be processed asynchronously. Learn More.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "container",
+            "in": "query",
+            "description": "Specifies the file format wrapper for the output audio. Learn More.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "encoding",
+            "in": "query",
+            "description": "Allows you to specify the expected encoding of your audio output. Learn More.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "model",
+            "in": "query",
+            "description": "AI model used to synthesize text into speech. Default: aura-asteria-en. Learn More.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "aura-asteria-en",
+                "aura-hera-en",
+                "aura-luna-en",
+                "aura-stella-en",
+                "aura-athena-en",
+                "aura-zeus-en",
+                "aura-orion-en",
+                "aura-arcas-en",
+                "aura-perseus-en",
+                "aura-angus-en",
+                "aura-orpheus-en",
+                "aura-helios-en"
+              ],
+              "default": "aura-asteria-en"
+            }
+          },
+          {
+            "name": "sample_rate",
+            "in": "query",
+            "description": "Specifies the sample rate for the output audio. Learn More.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Audio submitted for transcription.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "200 Success"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Audio submitted for transcription."
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Bad Request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "oneOf": [
+                {
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Unknown Model"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Input Text Contained No Characters"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "413": {
+        "description": "Payload Too Large",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "oneOf": [
+                {
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Request Body Exceeded 2MB"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Input Text Exceeded Character Limit"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "415": {
+        "description": "Unsupported Media Type",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "err_code": {
+                  "type": "string",
+                  "example": ""
+                },
+                "err_msg": {
+                  "type": "string",
+                  "example": ""
+                },
+                "request_id": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/read": {
+      "post": {
+        "summary": "Analyze text for various features such as topics, sentiment, and intent",
+        "parameters": [
+          {
+            "name": "custom_topic",
+            "in": "query",
+            "description": "A custom topic you want the model to detect within your input text if present. Submit up to one hundred topics.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "custom_topic_mode",
+            "in": "query",
+            "description": "Mode for custom topic detection. Use 'strict' to return only custom topics or 'extended' to include model-detected topics.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["extended", "strict"],
+              "default": "extended"
+            }
+          },
+          {
+            "name": "intents",
+            "in": "query",
+            "description": "Recognizes speaker intent throughout the input text.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "description": "The language of your input text. Only English (en) is supported.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          },
+          {
+            "name": "sentiment",
+            "in": "query",
+            "description": "Analyzes the sentiment of the input text.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "summarize",
+            "in": "query",
+            "description": "Provides a brief summary of the input text.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "topics",
+            "in": "query",
+            "description": "Detects topics throughout the input text.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "description": "The text to be analyzed."
+                  },
+                  "url": {
+                    "type": "string",
+                    "description": "The URL of the text to be analyzed."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "request_id": { "type": "string" },
+                        "created": { "type": "string" },
+                        "language": { "type": "string" },
+                        "summary_info": { "type": "object" },
+                        "sentiment_info": { "type": "object" },
+                        "topics_info": { "type": "object" },
+                        "intents_info": { "type": "object" }
+                      }
+                    },
+                    "results": {
+                      "type": "object",
+                      "properties": {
+                        "summary": { "type": "object" },
+                        "topics": { "type": "object" },
+                        "intents": { "type": "object" },
+                        "sentiments": { "type": "object" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "err_code": { "type": "string" },
+                    "err_msg": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects": {
+      "get": {
+        "summary": "Retrieve a list of projects",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "projects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "project_id": { "type": "string" },
+                          "name": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}": {
+      "get": {
+        "summary": "Retrieve information about a specific project",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to retrieve information. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Number of results to return per page. Default 10. Range [1,100]",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "required": false,
+            "description": "Start date of the requested date range. Formats accepted are YYYY-MM-DD, YYYY-MM-DDTHH:MM:SS, or YYYY-MM-DDTHH:MM:SS+HH:MM",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "required": false,
+            "description": "End date of the requested date range. Formats accepted are YYYY-MM-DD, YYYY-MM-DDTHH:MM:SS, or YYYY-MM-DDTHH:MM:SS+HH:MM.",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Navigate and return the results to retrieve specific portions of information of the response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "project_id": { "type": "string" },
+                    "name": { "type": "string" },
+                    "company": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an existing project",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project you want to update. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Update the project name."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Project updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing project",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project you want to delete. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Project deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Project deleted successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - You do not have permission to delete this project",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string", "example": "forbidden" },
+                    "message": {
+                      "type": "string",
+                      "example": "You do not have permission to delete this project."
+                    },
+                    "details": {
+                      "type": "string",
+                      "example": "User does not have the required role."
+                    },
+                    "request_id": { "type": "string", "example": "abc123" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - The specified project does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string", "example": "not_found" },
+                    "message": {
+                      "type": "string",
+                      "example": "The specified project does not exist."
+                    },
+                    "details": {
+                      "type": "string",
+                      "example": "No project found with the given ID."
+                    },
+                    "request_id": { "type": "string", "example": "abc123" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project}/models": {
+      "get": {
+        "summary": "Retrieve models available to a specific project",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "The specific UUID of the project.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include_outdated",
+            "in": "query",
+            "required": false,
+            "description": "Returns non-latest versions of models.",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/models/{modelId}": {
+      "get": {
+        "summary": "Retrieve information about a specific model",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to retrieve information. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the model for which you want to retrieve information. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/keys": {
+      "get": {
+        "summary": "List all keys for a specific project",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to list keys. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request was successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "member": {
+                      "type": "object",
+                      "properties": {
+                        "member_id": { "type": "string" },
+                        "email": { "type": "string" },
+                        "first_name": { "type": "string" },
+                        "last_name": { "type": "string" }
+                      }
+                    },
+                    "api_key": {
+                      "type": "object",
+                      "properties": {
+                        "api_key_id": { "type": "string" },
+                        "comment": { "type": "string" },
+                        "scopes": {
+                          "type": "array",
+                          "items": { "type": "string" }
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": { "type": "string" }
+                        },
+                        "created": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new API key for a specific project",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to create a key. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "comment": {
+                    "type": "string",
+                    "description": "Comments associated with the key you would like to create. Must be between 1 and 128 characters long, not including whitespace.",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "scopes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Scopes for the key you would like to create."
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Tags associated with the key you would like to create."
+                  },
+                  "expiration_date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date on which the key you would like to create should expire. You may specify either an expiration_date or time_to_live_in_seconds, but not both."
+                  },
+                  "time_to_live_in_seconds": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Length of time (in seconds) during which the key you would like to create will remain valid. You may specify either an expiration_date or time_to_live_in_seconds, but not both."
+                  }
+                },
+                "required": ["comment", "scopes"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Key successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "api_key_id": { "type": "string" },
+                    "key": { "type": "string" },
+                    "comment": { "type": "string" },
+                    "scopes": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    },
+                    "created": { "type": "string", "format": "date-time" }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - You do not have permission to create a key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - The project or resource does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/keys/{key_id}": {
+      "get": {
+        "summary": "Retrieve information about a specific key",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to get the key. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the key that you want to retrieve. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "key_id": { "type": "string" },
+                    "key_name": { "type": "string" },
+                    "created_at": { "type": "string", "format": "date-time" },
+                    "last_used": { "type": "string", "format": "date-time" }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a specific API key",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project that contains the key that you want to delete. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the key that you want to delete. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - You do not have permission to delete this key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - The project or key does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/members": {
+      "get": {
+        "summary": "Retrieve members of a specific project",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to get members. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request was successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "members": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "member_id": { "type": "string" },
+                          "first_name": { "type": "string" },
+                          "last_name": { "type": "string" },
+                          "scopes": {
+                            "type": "array",
+                            "items": { "type": "string" }
+                          },
+                          "email": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "err_code": { "type": "string" },
+                    "err_msg": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/members/{member_id}": {
+      "delete": {
+        "summary": "Remove a member from a specific project",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project from which you want to remove a member. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "member_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the member that you want to remove. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response indicating the member was removed",
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden - You do not have permission to remove this member",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - The project or member does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "err_code": { "type": "string" },
+                    "err_msg": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/members/{member_id}/scopes": {
+      "get": {
+        "summary": "Retrieve scopes for a specific member in a project",
+        "description": "This endpoint retrieves the scopes assigned to a specific member within a project using the project ID and the member ID.",
+        "operationId": "getMemberScopes",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Identifier of the project that contains the member for whom you want to get scopes. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "member_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the member for whom you want to get scopes. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with the scopes of the member",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "scopes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - You do not have permission to view the scopes for this member",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - The project or member does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/members/{member_id}/scope": {
+      "put": {
+        "summary": "Update the scope of a specific member in a project",
+        "description": "This endpoint updates the scope assigned to a specific member within a project using the project ID and the member ID.",
+        "operationId": "updateMemberScope",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project that contains the specified member and scope that you want to update. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "member_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the member for whom you want to update the scope. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "scope": {
+                    "type": "string",
+                    "description": "Scope for the specified member and project."
+                  }
+                },
+                "required": ["scope"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response indicating the scope was updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - You do not have permission to update the scope for this member",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - The project or member does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/invites": {
+      "get": {
+        "summary": "List all invites for a specific project",
+        "description": "This endpoint retrieves a list of all invites associated with a specific project using its unique identifier.",
+        "operationId": "listProjectInvites",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to list invites. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with a list of invites",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "invites": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "email": { "type": "string" },
+                          "scope": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - The request requires user authentication",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - You do not have permission to list invites for this project",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - The project does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Send an invite to a user for a specific project",
+        "description": "This endpoint allows sending an invite to a user to join a specific project by providing their email and the desired scope.",
+        "operationId": "sendProjectInvite",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to send an invite. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Details of the invite",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "Email to invite to the project"
+                  },
+                  "scope": {
+                    "type": "string",
+                    "description": "Scope to give the user"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully sent the invite",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Invite sent successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid input parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Invalid input"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - The user is not authorized to send invites",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - The user does not have permission to send invites for this project",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - The project does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "err_code": { "type": "string" },
+                    "err_msg": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/invites/{email}": {
+      "delete": {
+        "summary": "Delete an invite from a specific project",
+        "description": "This endpoint allows you to delete a pending invite for a specific project using the project's unique identifier and the email associated with the invite.",
+        "operationId": "deleteProjectInvite",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project from which you want to delete the invite. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "description": "Email of the invite you want to delete.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted the invite",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Invite deleted successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - The user does not have permission to delete this invite",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/leave": {
+      "delete": {
+        "summary": "Leave a specific project",
+        "description": "This endpoint allows the authenticated user to leave a specific project using the project's unique identifier.",
+        "operationId": "leaveProject",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project from which you want to remove the authenticated account. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully left the project",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "You have successfully left the project."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - The request is malformed or missing necessary information",
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden - The user does not have permission to leave this project",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/requests": {
+      "get": {
+        "summary": "Retrieve all requests for a specific project",
+        "description": "This endpoint allows you to retrieve all requests associated with a specific project, with options to filter by date range and paginate the results.",
+        "operationId": "getAllRequests",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to retrieve requests. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "required": false,
+            "description": "Start date of the requested date range. Formats accepted are YYYY-MM-DD, YYYY-MM-DDTHH:MM:SS, or YYYY-MM-DDTHH:MM:SS+HH:MM.",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "required": false,
+            "description": "End date of the requested date range. Formats accepted are YYYY-MM-DD, YYYY-MM-DDTHH:MM:SS, or YYYY-MM-DDTHH:MM:SS+HH:MM.",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Number of results to return per page. Default 10. Range [1,100].",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10,
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Navigate and return the results to retrieve specific portions of information of the response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request was successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "requests": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "request_id": { "type": "string" },
+                          "created": { "type": "string" },
+                          "path": { "type": "string" },
+                          "api_key_id": { "type": "string" },
+                          "response": {
+                            "type": "object",
+                            "description": "response object"
+                          },
+                          "callback": {
+                            "type": "object",
+                            "description": "callback object"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/requests/{request_id}": {
+      "get": {
+        "summary": "Retrieve a specific request for a project",
+        "description": "This endpoint allows you to retrieve a specific request associated with a project by providing the project ID and the request ID.",
+        "operationId": "getRequest",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to retrieve the specified request. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the request that you want to retrieve. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request was successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "request_id": { "type": "string" },
+                    "created": { "type": "string" },
+                    "path": { "type": "string" },
+                    "api_key_id": { "type": "string" },
+                    "response": {
+                      "type": "object",
+                      "properties": {
+                        "details": {
+                          "type": "object",
+                          "description": "details object"
+                        },
+                        "code": {
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "completed": { "type": "string" }
+                      }
+                    },
+                    "callback": {
+                      "type": "object",
+                      "properties": {
+                        "attempts": {
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "code": {
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "completed": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/usage": {
+      "get": {
+        "summary": "Summarize usage for a specific project",
+        "description": "This endpoint allows you to retrieve a summary of the usage statistics for a specified project by providing the project ID.",
+        "operationId": "summarizeUsage",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to retrieve the usage summary. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "required": false,
+            "description": "Start date of the requested date range. Format accepted is YYYY-MM-DD.",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "required": false,
+            "description": "End date of the requested date range. Format accepted is YYYY-MM-DD.",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "accessor",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to the given API key. To include multiple API Keys, send multiple instances in query string.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tag",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests associated with the specified tag. To include multiple tags, send multiple instances in query string.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "method",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests processed using the specified method. To include multiple methods, send multiple instances in query string.",
+            "schema": {
+              "type": "string",
+              "enum": ["sync", "async", "streaming"]
+            }
+          },
+          {
+            "name": "deployment",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests fulfilled in either Deepgram hosted cloud or your onprem deployment environment. To include multiple values, send multiple instances in query string.",
+            "schema": {
+              "type": "string",
+              "enum": ["hosted", "onprem"]
+            }
+          },
+          {
+            "name": "model",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests run with the specified model UUID applied.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "multichannel",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the multichannel feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "interim_results",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the interim_results feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "punctuate",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the punctuate feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "ner",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the ner feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "utterances",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the utterances feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "replace",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the replace feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "profanity_filter",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the profanity_filter feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "keywords",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the keywords feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "detect_topics",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the detect_topics feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "diarize",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the diarize feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the search feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "redact",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the redact feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "alternatives",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the alternatives feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "numerals",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the numerals feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "smart_format",
+            "in": "query",
+            "required": false,
+            "description": "Limits results to requests that include the smart_format feature.",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Summary of usage was successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "start": { "type": "string" },
+                    "end": { "type": "string" },
+                    "resolution": {
+                      "type": "object",
+                      "properties": {
+                        "units": { "type": "string" },
+                        "amount": { "type": "integer", "default": 0 }
+                      }
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "start": { "type": "string" },
+                          "end": { "type": "string" },
+                          "hours": { "type": "integer", "default": 0 },
+                          "total_hours": { "type": "integer", "default": 0 },
+                          "requests": { "type": "integer", "default": 0 }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/usage/fields": {
+      "get": {
+        "summary": "Retrieve Fields for a Project",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to retrieve fields. (UUID)",
+            "schema": {
+              "type": "string",
+              "default": "PROJECT_ID"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "required": false,
+            "description": "Start date of the requested date range. Format is YYYY-MM-DD. Defaults to the date of your first request.",
+            "schema": {
+              "type": "string",
+              "example": "2024-01-01"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "required": false,
+            "description": "End date of the requested date range. Format is YYYY-MM-DD. Defaults to the current date.",
+            "schema": {
+              "type": "string",
+              "example": "2024-12-31"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fields retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "models": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": { "type": "string" },
+                          "language": { "type": "string" },
+                          "version": { "type": "string" },
+                          "model_id": { "type": "string" }
+                        }
+                      }
+                    },
+                    "processing_methods": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "languages": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/balances": {
+      "get": {
+        "summary": "Get all outstanding balances for a project",
+        "description": "This endpoint retrieves a list of outstanding balances for the specified project. The authenticated account must be a project owner or administrator to see the balances.",
+        "operationId": "getAllBalances",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to retrieve the balances. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of outstanding balances for the specified project",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "balances": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "balance_id": { "type": "string" },
+                          "amount": { "type": "integer", "default": 0 },
+                          "units": { "type": "string" },
+                          "purchase": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request due to invalid input or parameters",
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden - The user does not have permission to access the balances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/balances/{balance_id}": {
+      "get": {
+        "summary": "Get a specific balance for a project",
+        "description": "This endpoint retrieves the details of a specific balance for the specified project. The authenticated account must be a project owner or administrator to see the balance.",
+        "operationId": "getBalance",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to retrieve the specified balance. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "balance_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the balance that you want to retrieve. (UUID)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Details of the specified balance for the project",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "balance_id": { "type": "string" },
+                    "amount": { "type": "integer", "default": 0 },
+                    "units": { "type": "string" },
+                    "purchase": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request due to invalid input or parameters",
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden - The user does not have permission to access the balance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/models": {
+      "get": {
+        "summary": "Get Models",
+        "description": "Returns metadata on all the latest public models. If multiple versions exist, the latest model version is returned. Use the `include_outdated=true` parameter to include non-latest versions of models.",
+        "operationId": "getModels",
+        "parameters": [
+          {
+            "name": "include_outdated",
+            "in": "query",
+            "required": false,
+            "description": "Returns non-latest versions of models.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of metadata for all the latest public models.",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad request due to invalid input or parameters.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/v1/models/{modelId}": {
+      "get": {
+        "summary": "Get Model",
+        "description": "Returns the metadata for a specific model. If the model is not found, a 404 error is returned. This endpoint works for public models only.",
+        "operationId": "getModel",
+        "parameters": [
+          {
+            "name": "model_uuid",
+            "in": "path",
+            "required": true,
+            "description": "The specific UUID of the model.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the metadata for the specified model.",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad request due to invalid input or parameters.",
+            "content": {}
+          },
+          "404": {
+            "description": "The specified model was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{project_id}/self-hosted/distribution/credentials": {
+      "get": {
+        "summary": "List Credentials",
+        "description": "Retrieve a list of credentials for the specified project.",
+        "operationId": "listCredentials",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to get keys. (UUID)",
+            "schema": {
+              "type": "string",
+              "default": "PROJECT_ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of credentials associated with the specified project.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "distribution_credentials": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "member": {
+                            "type": "object"
+                          },
+                          "distribution_credentials": {
+                            "type": "object"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access forbidden. You don't have permission to view the credentials for this project.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The specified project was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Distribution Credentials",
+        "description": "Create a new set of distribution credentials for a specific project.",
+        "operationId": "createCredentials",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to create distribution credentials. (UUID)",
+            "schema": {
+              "type": "string",
+              "default": "PROJECT_ID"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The body parameters to create distribution credentials.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "comment": {
+                    "type": "string",
+                    "description": "A friendly name for the distribution credentials.",
+                    "default": "My self-hosted distribution credentials"
+                  },
+                  "scopes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The product scopes granted to the credentials.",
+                    "default": ["self-hosted:products"]
+                  },
+                  "provider": {
+                    "type": "string",
+                    "description": "The provider for the distribution credentials. Only valid value is 'quay'.",
+                    "default": "quay"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The distribution credentials were successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "member": {
+                      "type": "object",
+                      "properties": {
+                        "member_id": { "type": "string" },
+                        "email": { "type": "string" }
+                      }
+                    },
+                    "distribution_credentials": {
+                      "type": "object",
+                      "properties": {
+                        "distribution_credentials_id": { "type": "string" },
+                        "provider": { "type": "string" },
+                        "comment": { "type": "string" },
+                        "scopes": {
+                          "type": "array",
+                          "items": { "type": "string" }
+                        },
+                        "created": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access forbidden. You don't have permission to create credentials for this project.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The specified project was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
+
+    "/v1/projects/{project_id}/self-hosted/distribution/credentials/{distribution_credentials_id}": {
+      "get": {
+        "summary": "Get Specific Credential",
+        "description": "Retrieve details of a specific distribution credential for a given project.",
+        "operationId": "getCredentials",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to get keys. (UUID)",
+            "schema": {
+              "type": "string",
+              "default": "PROJECT_ID"
+            }
+          },
+          {
+            "name": "distribution_credentials_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the distribution credentials you want to examine. (UUID)",
+            "schema": {
+              "type": "string",
+              "default": "DISTRIBUTION_CREDENTIALS_ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Details of the specific distribution credential.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "member": {
+                      "type": "object",
+                      "properties": {
+                        "member_id": { "type": "string" },
+                        "email": { "type": "string" }
+                      }
+                    },
+                    "distribution_credentials": {
+                      "type": "object",
+                      "properties": {
+                        "distribution_credentials_id": { "type": "string" },
+                        "provider": { "type": "string" },
+                        "comment": { "type": "string" },
+                        "scopes": {
+                          "type": "array",
+                          "items": { "type": "string" }
+                        },
+                        "created": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access forbidden. You don't have permission to view the credentials for this project.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The specified distribution credential was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string" },
+                    "message": { "type": "string" },
+                    "details": { "type": "string" },
+                    "request_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete Distribution Credentials",
+        "description": "Delete a specific set of distribution credentials for a project.",
+        "operationId": "deleteCredentials",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the project for which you want to delete the distribution credentials. (UUID)",
+            "schema": {
+              "type": "string",
+              "default": "PROJECT_ID"
+            }
+          },
+          {
+            "name": "distribution_credentials_id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the distribution credentials you want to delete. (UUID)",
+            "schema": {
+              "type": "string",
+              "default": "DISTRIBUTION_CREDENTIALS_ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The distribution credentials were successfully deleted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Credentials deleted successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access forbidden. You don't have permission to delete these credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string", "example": "Forbidden" },
+                    "message": {
+                      "type": "string",
+                      "example": "You do not have permission to delete these credentials."
+                    },
+                    "details": {
+                      "type": "string",
+                      "example": "User lacks the necessary permissions."
+                    },
+                    "request_id": { "type": "string", "example": "REQUEST_ID" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The specified project or credentials were not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "category": { "type": "string", "example": "Not Found" },
+                    "message": {
+                      "type": "string",
+                      "example": "The specified credentials or project were not found."
+                    },
+                    "details": {
+                      "type": "string",
+                      "example": "Check if the project ID and credentials ID are correct."
+                    },
+                    "request_id": { "type": "string", "example": "REQUEST_ID" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    }
+  }
+}
