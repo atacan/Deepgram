@@ -705,7 +705,64 @@ public enum Servers {
 /// Types generated from the components section of the OpenAPI document.
 public enum Components {
     /// Types generated from the `#/components/schemas` section of the OpenAPI document.
-    public enum Schemas {}
+    public enum Schemas {
+        /// - Remark: Generated from `#/components/schemas/Language`.
+        @frozen public enum Language: String, Codable, Hashable, Sendable, CaseIterable {
+            case bg = "bg"
+            case ca = "ca"
+            case cs = "cs"
+            case da_hyphen_DK = "da-DK"
+            case da = "da"
+            case de_hyphen_CH = "de-CH"
+            case de = "de"
+            case el = "el"
+            case en_hyphen_AU = "en-AU"
+            case en_hyphen_GB = "en-GB"
+            case en_hyphen_IN = "en-IN"
+            case en_hyphen_NZ = "en-NZ"
+            case en_hyphen_US = "en-US"
+            case en = "en"
+            case es_hyphen_419 = "es-419"
+            case es = "es"
+            case et = "et"
+            case fi = "fi"
+            case fr_hyphen_CA = "fr-CA"
+            case fr = "fr"
+            case hi = "hi"
+            case hu = "hu"
+            case id = "id"
+            case it = "it"
+            case ja = "ja"
+            case ko_hyphen_KR = "ko-KR"
+            case ko = "ko"
+            case lt = "lt"
+            case lv = "lv"
+            case ms = "ms"
+            case nl_hyphen_BE = "nl-BE"
+            case nl = "nl"
+            case no = "no"
+            case pl = "pl"
+            case pt_hyphen_BR = "pt-BR"
+            case pt_hyphen_PT = "pt-PT"
+            case pt = "pt"
+            case ro = "ro"
+            case ru = "ru"
+            case sk = "sk"
+            case sv_hyphen_SE = "sv-SE"
+            case sv = "sv"
+            case th_hyphen_TH = "th-TH"
+            case th = "th"
+            case tr = "tr"
+            case uk = "uk"
+            case vi = "vi"
+            case zh_hyphen_CN = "zh-CN"
+            case zh_hyphen_Hans = "zh-Hans"
+            case zh_hyphen_Hant = "zh-Hant"
+            case zh_hyphen_HK = "zh-HK"
+            case zh_hyphen_TW = "zh-TW"
+            case zh = "zh"
+        }
+    }
     /// Types generated from the `#/components/parameters` section of the OpenAPI document.
     public enum Parameters {}
     /// Types generated from the `#/components/requestBodies` section of the OpenAPI document.
@@ -794,7 +851,7 @@ public enum Operations {
                 /// The BCP-47 language tag that hints at the primary spoken language. Default: en.
                 ///
                 /// - Remark: Generated from `#/paths/v1/listen/POST/query/language`.
-                public var language: Swift.String?
+                public var language: Components.Schemas.Language?
                 /// Spoken measurements will be converted to their corresponding abbreviations. e.g., milligram to mg. Default: false.
                 ///
                 /// - Remark: Generated from `#/paths/v1/listen/POST/query/measurements`.
@@ -927,7 +984,7 @@ public enum Operations {
                     filler_words: Swift.Bool? = nil,
                     intents: Swift.Bool? = nil,
                     keywords: Swift.String? = nil,
-                    language: Swift.String? = nil,
+                    language: Components.Schemas.Language? = nil,
                     measurements: Swift.Bool? = nil,
                     model: Swift.String? = nil,
                     multichannel: Swift.Bool? = nil,

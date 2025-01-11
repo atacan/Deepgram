@@ -11,6 +11,66 @@
     }
   ],
   "components": {
+    "schemas": {
+      "Language": {
+        "type": "string",
+        "enum":[
+          "bg",
+          "ca",
+          "cs",
+          "da-DK",
+          "da",
+          "de-CH",
+          "de",
+          "el",
+          "en-AU",
+          "en-GB",
+          "en-IN",
+          "en-NZ",
+          "en-US",
+          "en",
+          "es-419",
+          "es",
+          "et",
+          "fi",
+          "fr-CA",
+          "fr",
+          "hi",
+          "hu",
+          "id",
+          "it",
+          "ja",
+          "ko-KR",
+          "ko",
+          "lt",
+          "lv",
+          "ms",
+          "nl-BE",
+          "nl",
+          "no",
+          "pl",
+          "pt-BR",
+          "pt-PT",
+          "pt",
+          "ro",
+          "ru",
+          "sk",
+          "sv-SE",
+          "sv",
+          "th-TH",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-CN",
+          "zh-Hans",
+          "zh-Hant",
+          "zh-HK",
+          "zh-TW",
+          "zh"
+        ]
+      }
+    },
     "securitySchemes": {
       "Authorization": {
         "type": "http",
@@ -184,8 +244,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "default": "en"
+              "$ref": "#/components/schemas/Language"
             },
             "description": "The BCP-47 language tag that hints at the primary spoken language. Default: en."
           },
