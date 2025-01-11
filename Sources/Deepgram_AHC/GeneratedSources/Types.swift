@@ -220,11 +220,13 @@ extension APIProtocol {
     /// - Remark: Generated from `#/paths//v1/listen/post(listen)`.
     public func listen(
         query: Operations.listen.Input.Query = .init(),
-        headers: Operations.listen.Input.Headers = .init()
+        headers: Operations.listen.Input.Headers = .init(),
+        body: Operations.listen.Input.Body
     ) async throws -> Operations.listen.Output {
         try await listen(Operations.listen.Input(
             query: query,
-            headers: headers
+            headers: headers,
+            body: body
         ))
     }
     /// Text-to-speech API
@@ -997,17 +999,26 @@ public enum Operations {
                 }
             }
             public var headers: Operations.listen.Input.Headers
+            /// - Remark: Generated from `#/paths/v1/listen/POST/requestBody`.
+            @frozen public enum Body: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/listen/POST/requestBody/content/application\/octet-stream`.
+                case binary(OpenAPIRuntime.HTTPBody)
+            }
+            public var body: Operations.listen.Input.Body
             /// Creates a new `Input`.
             ///
             /// - Parameters:
             ///   - query:
             ///   - headers:
+            ///   - body:
             public init(
                 query: Operations.listen.Input.Query = .init(),
-                headers: Operations.listen.Input.Headers = .init()
+                headers: Operations.listen.Input.Headers = .init(),
+                body: Operations.listen.Input.Body
             ) {
                 self.query = query
                 self.headers = headers
+                self.body = body
             }
         }
         @frozen public enum Output: Sendable, Hashable {

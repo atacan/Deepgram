@@ -44,8 +44,15 @@ final class DeepgramDependencyTests: XCTestCase {
         parameters.punctuate = true
         parameters.model = "nova-2"
         parameters.language = .english
+
+        let apiKey = getEnvironmentVariable("DEEPGRAM_API_TOKEN")!
         
-        let text = try await DeepgramClient.liveValue.transcribeLocalAudio(url, parameters)
+        let text = try await DeepgramClient.liveValue.transcribeLocalAudio(
+          apiKey: apiKey,
+          baseUrlString: "https://api.deepgram.com",
+          fileUrl: url,
+          parameters: parameters
+        )
         
         XCTAssertEqual("And so my fellow Americans, ask not what your country can do for you, ask what you can do for your country.", text)
     }

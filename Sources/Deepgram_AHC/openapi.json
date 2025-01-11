@@ -375,6 +375,17 @@
             "description": "Version of the model to use. Default: latest."
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",
