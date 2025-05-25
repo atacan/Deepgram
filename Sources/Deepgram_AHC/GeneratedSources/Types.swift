@@ -1206,6 +1206,8 @@ public enum Operations {
                                             public var start: Swift.Double?
                                             /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphsPayload/end`.
                                             public var end: Swift.Double?
+                                            /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphsPayload/speaker`.
+                                            public var speaker: Swift.Int?
                                             /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphsPayload/sentencesPayload`.
                                             public struct sentencesPayloadPayload: Codable, Hashable, Sendable {
                                                 /// - Remark: Generated from `#/paths/v1/listen/POST/responses/200/content/json/results/channelsPayload/alternativesPayload/paragraphs/paragraphsPayload/sentencesPayload/text`.
@@ -1245,22 +1247,26 @@ public enum Operations {
                                             ///   - num_words:
                                             ///   - start:
                                             ///   - end:
+                                            ///   - speaker:
                                             ///   - sentences:
                                             public init(
                                                 num_words: Swift.Int? = nil,
                                                 start: Swift.Double? = nil,
                                                 end: Swift.Double? = nil,
+                                                speaker: Swift.Int? = nil,
                                                 sentences: Operations.listen.Output.Ok.Body.jsonPayload.resultsPayload.channelsPayloadPayload.alternativesPayloadPayload.paragraphsPayload.paragraphsPayloadPayload.sentencesPayload? = nil
                                             ) {
                                                 self.num_words = num_words
                                                 self.start = start
                                                 self.end = end
+                                                self.speaker = speaker
                                                 self.sentences = sentences
                                             }
                                             public enum CodingKeys: String, CodingKey {
                                                 case num_words
                                                 case start
                                                 case end
+                                                case speaker
                                                 case sentences
                                             }
                                         }

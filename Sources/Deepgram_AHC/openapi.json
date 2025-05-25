@@ -522,6 +522,7 @@
                                               "num_words": { "type": "integer" },
                                               "start": { "type": "number" },
                                               "end": { "type": "number" },
+                                              "speaker": { "type": "integer" },
                                               "sentences": {
                                                 "type": "array",
                                                 "items": {
