@@ -7,6 +7,7 @@ DerivedData/
 .netrc
 .env
 auth/
+DeepgramExampleApp/DeepgramExampleApp.xcodeproj/xcshareddata/xcschemes/DeepgramExampleApp.xcscheme
 
 # Audio files
 *.wav
@@ -14,3 +15,6 @@ auth/
 *.m4a
 *.aac
 *.ogg
+DeepgramExampleApp/.build/index-build/arm64-apple-macosx/debug/index/db/v13/p83743--9846e8/data.mdb
+DeepgramExampleApp/.build/index-build/arm64-apple-macosx/debug/index/db/v13/p83743--9846e8/lock.mdb
+DeepgramExampleApp/.build/index-build/workspace-state.json
