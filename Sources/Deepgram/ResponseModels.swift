@@ -19,7 +19,7 @@ public struct DeepgramResponse: Codable, Sendable {
         public let duration: Double
         public let modelInfo: [String: Model]
 
-        enum CodingKeys: String, CodingKey {
+        public enum CodingKeys: String, CodingKey {
             case sha256, models, channels
             case transactionKey = "transaction_key"
             case requestID = "request_id"
@@ -101,7 +101,7 @@ public struct DeepgramResponse: Codable, Sendable {
         public let sentences: [Sentence]
         public let start: Double
 
-        enum CodingKeys: String, CodingKey {
+        public enum CodingKeys: String, CodingKey {
             case numWords = "num_words"
             case end, sentences, start
         }
@@ -133,7 +133,7 @@ public struct DeepgramResponse: Codable, Sendable {
         public let punctuatedWord: String?
         public let end, confidence, start: Double
 
-        enum CodingKeys: String, CodingKey {
+        public enum CodingKeys: String, CodingKey {
             case word
             case punctuatedWord = "punctuated_word"
             case end, confidence, start
@@ -152,15 +152,15 @@ public struct DeepgramResponse: Codable, Sendable {
 
 // MARK: - DeepgramStreamingResponse
 public struct DeepgramStreamingResponse: Codable, Sendable {
-    var type: String
-    var channelIndex: [Int]
-    var duration, start: Double
-    var isFinal, speechFinal: Bool
+    public var type: String
+    public var channelIndex: [Int]
+    public var duration, start: Double
+    public var isFinal, speechFinal: Bool
     public var channel: Channel
-    var metadata: Metadata
-    var fromFinalize: Bool
+    public var metadata: Metadata
+    public var fromFinalize: Bool
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case type
         case channelIndex = "channel_index"
         case duration, start
@@ -178,29 +178,29 @@ public struct DeepgramStreamingResponse: Codable, Sendable {
     // MARK: - Alternative
     public struct Alternative: Codable, Sendable {
         public var transcript: String
-        var confidence: Double
-        var words: [Word]
+        public var confidence: Double
+        public var words: [Word]
     }
 
     // MARK: - Word
-    struct Word: Codable, Sendable {
-        var word: String
-        var start, end, confidence: Double
-        var punctuatedWord: String
+    public struct Word: Codable, Sendable {
+        public var word: String
+        public var start, end, confidence: Double
+        public var punctuatedWord: String
 
-        enum CodingKeys: String, CodingKey {
+        public enum CodingKeys: String, CodingKey {
             case word, start, end, confidence
             case punctuatedWord = "punctuated_word"
         }
     }
 
     // MARK: - Metadata
-    struct Metadata: Codable, Sendable {
-        var requestID: String
-        var modelInfo: ModelInfo
-        var modelUUID: String
+    public struct Metadata: Codable, Sendable {
+        public var requestID: String
+        public var modelInfo: ModelInfo
+        public var modelUUID: String
 
-        enum CodingKeys: String, CodingKey {
+        public enum CodingKeys: String, CodingKey {
             case requestID = "request_id"
             case modelInfo = "model_info"
             case modelUUID = "model_uuid"
@@ -208,18 +208,18 @@ public struct DeepgramStreamingResponse: Codable, Sendable {
     }
 
     // MARK: - ModelInfo
-    struct ModelInfo: Codable, Sendable {
-        var name, version, arch: String
+    public struct ModelInfo: Codable, Sendable {
+        public var name, version, arch: String
     }
 }
 
 // MARK: - DeepgramCloseStreamConfirmation
 public struct DeepgramCloseStreamConfirmation: Codable, Sendable {
-    var type, transactionKey, requestID, sha256: String
-    var created: String
-    var duration, channels: Int
+    public var type, transactionKey, requestID, sha256: String
+    public var created: String
+    public var duration, channels: Int
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case type
         case transactionKey = "transaction_key"
         case requestID = "request_id"
@@ -229,9 +229,9 @@ public struct DeepgramCloseStreamConfirmation: Codable, Sendable {
 
 // MARK: - DeepgramFinalizeConfirmation
 public struct DeepgramFinalizeConfirmation: Codable, Sendable {
-    var fromFinalize: Bool
+    public var fromFinalize: Bool
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case fromFinalize = "from_finalize"
     }
 }
