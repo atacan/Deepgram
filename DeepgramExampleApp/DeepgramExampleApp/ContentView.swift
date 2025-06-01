@@ -30,8 +30,9 @@ class RecordingViewModel {
         print("Recording started")
 
         let transcript = try await deepgramClient.streamAndCollect(
-            apiKey: "",
-            baseUrlString: "wss://api.deepgram.com/v1/listen?encoding=linear16&sample_rate=48000&channels=1&model=nova&smart_format=true&filler_words=true",
+            apiKey: ProcessInfo.processInfo.environment["apikey"]!,
+            baseUrlString: "ws://localhost:8080/echo?model=deepgram.base&output_format=json",
+//            baseUrlString: "wss://api.deepgram.com/v1/listen?encoding=linear16&sample_rate=48000&channels=1&model=nova&smart_format=true&filler_words=true",
             parameters: .init()
         )
         print(#function, transcript)
