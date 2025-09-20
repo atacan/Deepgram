@@ -41,8 +41,10 @@ extension DeepgramClient: DependencyKey {
                 // Create and configure the URLRequest
                 var request = URLRequest(url: url)
                 request.httpMethod = "POST"
-                request.addValue("Token \(apiKey)", forHTTPHeaderField: "Authorization")
-                
+//                request.addValue("Token \(apiKey)", forHTTPHeaderField: "Authorization")
+                request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+                request.addValue("realtime=v1", forHTTPHeaderField: "OpenAI-Beta")
+
                 // Create the URLSession configuration
                 let session = URLSession.shared
                 
@@ -113,6 +115,7 @@ extension DeepgramClient: DependencyKey {
                                     case .success(let message):
                                         switch message {
                                         case .string(let text):
+                                            print(text)
                                             do {
                                                 let deepgramResponse = try decoder.decode(DeepgramStreamingResponse.self, from: text.data(using: .utf8)!)
                                                 let transcript = deepgramResponse.channel.alternatives[0].transcript
@@ -127,6 +130,8 @@ extension DeepgramClient: DependencyKey {
                                             }
                                         case .data(let data):
                                             print(data.count, "of data received")
+                                            let json = try JSONSerialization.jsonObject(with: data)
+                                            print("json", json)
                                         }
                                     case .failure(let error):
                                         print("WebSocket did receive failure", error)

@@ -2,7 +2,8 @@
 // https://github.com/atacan
 // 10.10.24
 	
-
+import Foundation
+import AVFoundation
 import SwiftUI
 import Dependencies
 import DeepgramDependency
@@ -31,7 +32,11 @@ class RecordingViewModel {
 
         let transcript = try await deepgramClient.streamAndCollect(
             apiKey: ProcessInfo.processInfo.environment["apikey"]!,
+//            apiKey: ProcessInfo.processInfo.environment["OPENAI_API_KEY"]!,
             baseUrlString: "ws://localhost:8080/echo?model=deepgram.base&output_format=json",
+//            baseUrlString: "ws://localhost:8080/echo?model=assemblyai.best",
+//            baseUrlString: "wss://api.speechall.com/echo?model=deepgram.base",
+//            baseUrlString: "wss://api.openai.com/v1/realtime?intent=transcription",
 //            baseUrlString: "wss://api.deepgram.com/v1/listen?encoding=linear16&sample_rate=48000&channels=1&model=nova&smart_format=true&filler_words=true",
             parameters: .init()
         )
@@ -57,11 +62,15 @@ struct RecordingView: View {
                 .padding()
             
             Button(action: {
+                var audioEngine = AVAudioEngine()
+                let inputNode = audioEngine.inputNode
+                let inputFormat = inputNode.inputFormat(forBus: 0)
+                print("inputFormat.sampleRate", inputFormat.sampleRate)
                 Task {
                     if viewModel.isRecording {
                         try! await viewModel.stopRecording()
                     } else {
-                        try! await viewModel.startRecording()
+                        try! await  viewModel.startRecording()
                     }
                 }
             }) {

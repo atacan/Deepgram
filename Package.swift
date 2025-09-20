@@ -15,7 +15,7 @@ let package = Package(
         // the models for request and response
         .library(name: "Deepgram", targets: ["Deepgram"]),
         // local use for apps
-        .library(name: "DeepgramDependency", targets: ["DeepgramDependency"]),
+        // .library(name: "DeepgramDependency", targets: ["DeepgramDependency"]),
         // AsyncHTTPClient implementation
         .library(name: "Deepgram_AHC", targets: ["Deepgram_AHC"]),
     ],
@@ -23,9 +23,6 @@ let package = Package(
         .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.4.1"),
         .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.6.0"),
         .package(url: "git@github.com:atacan/WebSocketDependency.git", branch: "main"),
-        // .package(path: "../WebSocketDependency"),
-        .package(url: "git@github.com:atacan/AudioRecorder.git", branch: "main"),
-        // .package(path: "../AudioRecorder"),
 
         .package(url: "https://github.com/apple/swift-openapi-generator", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-openapi-runtime", from: "1.0.0"),
@@ -36,16 +33,16 @@ let package = Package(
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(name: "Deepgram"),
-        .target(
-            name: "DeepgramDependency",
-            dependencies: [
-                "Deepgram",
-                .product(name: "Dependencies", package: "swift-dependencies"),
-                .product(name: "DependenciesMacros", package: "swift-dependencies"),
-                .product(name: "WebSocketDependency", package: "WebSocketDependency"),
-                .product(name: "AudioDataStreamClient", package: "AudioRecorder"),
-            ]
-        ),
+        // .target(
+        //     name: "DeepgramDependency",
+        //     dependencies: [
+        //         "Deepgram",
+        //         .product(name: "Dependencies", package: "swift-dependencies"),
+        //         .product(name: "DependenciesMacros", package: "swift-dependencies"),
+        //         .product(name: "WebSocketDependency", package: "WebSocketDependency"),
+        //         .product(name: "AudioDataStreamClient", package: "AudioRecorder"),
+        //     ]
+        // ),
         .target(
             name: "Deepgram_AHC",
             dependencies: [
@@ -61,10 +58,10 @@ let package = Package(
             name: "DeepgramTests",
             dependencies: ["Deepgram"]
         ),
-        .testTarget(
-            name: "DeepgramDependencyTests", 
-            dependencies: ["DeepgramDependency"]
-        ),
+//        .testTarget(
+//            name: "DeepgramDependencyTests", 
+//            dependencies: ["DeepgramDependency"]
+//        ),
         .testTarget(
             name: "Deepgram_AHCTests",
             dependencies: ["Deepgram_AHC"],

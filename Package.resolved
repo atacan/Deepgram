@@ -10,15 +10,6 @@
       }
     },
     {
-      "identity" : "audiorecorder",
-      "kind" : "remoteSourceControl",
-      "location" : "git@github.com:atacan/AudioRecorder.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "92bb43ae5b7afee516fad2ba4ba7617e0f978d73"
-      }
-    },
-    {
       "identity" : "combine-schedulers",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/combine-schedulers",
@@ -223,15 +214,6 @@
       "state" : {
         "revision" : "f9266c85189c2751589a50ea5aec72799797e471",
         "version" : "1.3.0"
-      }
-    },
-    {
-      "identity" : "systemsounddependency",
-      "kind" : "remoteSourceControl",
-      "location" : "git@github.com:atacan/SystemSoundDependency.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "6b73d94160acfc510ed46a6985c6d4531536d651"
       }
     },
     {
