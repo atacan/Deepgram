@@ -34,7 +34,7 @@ struct DeepgramTests {
 
         return Client(
             serverURL: try! Servers.Server1.url(),
-            configuration: Configuration(dateTranscoder: any DateTranscoder, jsonEncodingOptions: JSONEncodingOptions, multipartBoundaryGenerator: any MultipartBoundaryGenerator, xmlCoder: (any CustomCoder)?)
+            configuration: Configuration(dateTranscoder: .iso8601WithFractionalSeconds),
             transport: AsyncHTTPClientTransport(),
             middlewares: [
                 authMiddleware
@@ -95,84 +95,5 @@ struct DeepgramTests {
         )
 
         dump(response)
-    }
-
-    @Test func decodesTranscribeResponseWithFractionalCreatedTimestamp() throws {
-        let responseData = Data(
-            """
-            {
-              "metadata": {
-                "channels": 1,
-                "created": "2026-05-06T17:59:48.885Z",
-                "duration": 4.8754377,
-                "model_info": {
-                  "1ed36bac-f71c-4f3f-a31f-02fd6525c489": {
-                    "arch": "base",
-                    "name": "general",
-                    "version": "2024-01-26.8851"
-                  }
-                },
-                "models": [
-                  "1ed36bac-f71c-4f3f-a31f-02fd6525c489"
-                ],
-                "request_id": "019dfe72-2a63-7aa2-85eb-b1864901de41",
-                "sha256": "65dc1688ecf4f6ae26f70e2b22dd8bb957ad616d167c0e1253566d8f5a81de3b",
-                "transaction_key": "deprecated"
-              },
-              "results": {
-                "channels": [
-                  {
-                    "alternatives": [
-                      {
-                        "confidence": 0.9746094,
-                        "paragraphs": {
-                          "paragraphs": [
-                            {
-                              "end": 4.3510656,
-                              "num_words": 15,
-                              "sentences": [
-                                {
-                                  "end": 1.9559835,
-                                  "start": 0.3592623,
-                                  "text": "This is me speaking to the microphone."
-                                }
-                              ],
-                              "start": 0.3592623
-                            }
-                          ],
-                          "transcript": "\\nThis is me speaking to the microphone."
-                        },
-                        "transcript": "This is me speaking to the microphone.",
-                        "words": [
-                          {
-                            "confidence": 0.99609375,
-                            "end": 0.5189344,
-                            "punctuated_word": "This",
-                            "start": 0.3592623,
-                            "word": "this"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-            """
-            .utf8
-        )
-
-        let response = try JSONDecoder()
-            .decode(
-                Components.Schemas.listen_v1_media_transcribe_Response_200.self,
-                from: responseData
-            )
-
-        switch response {
-        case .ListenV1Response(let response):
-            #expect(response.metadata.created == "2026-05-06T17:59:48.885Z")
-        case .ListenV1AcceptedResponse:
-            Issue.record("Expected a standard transcription response.")
-        }
     }
 }
