@@ -24,7 +24,7 @@ public struct AuthenticationMiddleware: ClientMiddleware {
 
         // API Key in Header Authentication
         if let httpFieldName = HTTPField.Name("authorization") {
-            request.headerFields[httpFieldName] = apiKey
+            request.headerFields[httpFieldName] = "Token " + apiKey
         }
 
         return try await next(request, body, baseURL)

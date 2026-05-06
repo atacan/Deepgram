@@ -37,4 +37,10 @@ info:
 #   - target: "$.components.schemas.LegacyModel.properties.oldField"
 #     remove: true
 
-actions: []
+actions:
+  - target: "$.paths['/v1/listen'].post.requestBody.content"
+    update:
+      application/octet-stream:
+        schema:
+          type: string
+          format: binary

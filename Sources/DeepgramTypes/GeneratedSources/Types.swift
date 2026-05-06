@@ -9500,6 +9500,8 @@ public enum Operations {
             @frozen public enum Body: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/v1/listen/POST/requestBody/content/application\/json`.
                 case json(Components.Schemas.ListenV1RequestUrl)
+                /// - Remark: Generated from `#/paths/v1/listen/POST/requestBody/content/application\/octet-stream`.
+                case binary(OpenAPIRuntime.HTTPBody)
             }
             public var body: Operations.transcribe.Input.Body?
             /// Creates a new `Input`.

@@ -1318,6 +1318,12 @@ public struct Client: APIProtocol {
                         headerFields: &request.headerFields,
                         contentType: "application/json; charset=utf-8"
                     )
+                case let .binary(value):
+                    body = try converter.setOptionalRequestBodyAsBinary(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/octet-stream"
+                    )
                 }
                 return (request, body)
             },
