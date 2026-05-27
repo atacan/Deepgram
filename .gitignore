@@ -8,6 +8,12 @@ xcuserdata/
 
 # Environment files (keep .env.example, ignore actual .env)
 .env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+credentials.json
 
 # macOS
 .DS_Store
@@ -30,3 +36,6 @@ venv/
 
 **.m4a
 **.wav
+# Secret scanning reports
+gitleaks-report.json
+trufflehog-report.json
