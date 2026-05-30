@@ -39,3 +39,4 @@ venv/
 # Secret scanning reports
 gitleaks-report.json
 trufflehog-report.json
+models-response.json
