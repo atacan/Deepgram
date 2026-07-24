@@ -44,3 +44,12 @@ actions:
         schema:
           type: string
           format: binary
+
+  - target: "$.paths.*.*.responses"
+    update:
+      '504':
+        description: Gateway Timeout
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorResponse'

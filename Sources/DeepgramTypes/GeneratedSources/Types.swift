@@ -7294,6 +7294,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/agent/settings/think/models/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/agent/settings/think/models/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.agentSettingsThinkModels.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.agentSettingsThinkModels.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/agent/settings/think/models/get(agentSettingsThinkModels)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.agentSettingsThinkModels.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.agentSettingsThinkModels.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -7470,6 +7521,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agents/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agents/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Agents_2.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Agents_2.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/agents/get(projects_project_id_Agents_2)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Agents_2.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Agents_2.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -7665,6 +7767,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agents/POST/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agents/POST/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Agents.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Agents.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/agents/post(projects_project_id_Agents)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Agents.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Agents.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -7848,6 +8001,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agents/{agent_id}/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agents/{agent_id}/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Agents_agent_id.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Agents_agent_id.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/agents/{agent_id}/get(projects_project_id_Agents_agent_id)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Agents_agent_id.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Agents_agent_id.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -8050,6 +8254,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agents/{agent_id}/PUT/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agents/{agent_id}/PUT/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Agents_agent_id_2.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Agents_agent_id_2.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/agents/{agent_id}/put(projects_project_id_Agents_agent_id_2)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Agents_agent_id_2.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Agents_agent_id_2.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -8238,6 +8493,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agents/{agent_id}/DELETE/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agents/{agent_id}/DELETE/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Agents_agent_id_3.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Agents_agent_id_3.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/agents/{agent_id}/delete(projects_project_id_Agents_agent_id_3)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Agents_agent_id_3.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Agents_agent_id_3.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -8414,6 +8720,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agent-variables/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agent-variables/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_AgentVariables_2.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_AgentVariables_2.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/agent-variables/get(projects_project_id_AgentVariables_2)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_AgentVariables_2.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_AgentVariables_2.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -8609,6 +8966,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agent-variables/POST/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agent-variables/POST/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_AgentVariables.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_AgentVariables.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/agent-variables/post(projects_project_id_AgentVariables)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_AgentVariables.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_AgentVariables.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -8792,6 +9200,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agent-variables/{variable_id}/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agent-variables/{variable_id}/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_AgentVariables_variable_id.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_AgentVariables_variable_id.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/agent-variables/{variable_id}/get(projects_project_id_AgentVariables_variable_id)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_AgentVariables_variable_id.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_AgentVariables_variable_id.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -8994,6 +9453,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agent-variables/{variable_id}/PATCH/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agent-variables/{variable_id}/PATCH/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_AgentVariables_variable_id_2.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_AgentVariables_variable_id_2.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/agent-variables/{variable_id}/patch(projects_project_id_AgentVariables_variable_id_2)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_AgentVariables_variable_id_2.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_AgentVariables_variable_id_2.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -9177,6 +9687,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agent-variables/{variable_id}/DELETE/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/agent-variables/{variable_id}/DELETE/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_AgentVariables_variable_id_3.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_AgentVariables_variable_id_3.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/agent-variables/{variable_id}/delete(projects_project_id_AgentVariables_variable_id_3)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_AgentVariables_variable_id_3.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_AgentVariables_variable_id_3.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -9623,6 +10184,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/listen/POST/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/listen/POST/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.transcribe.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.transcribe.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/listen/post(transcribe)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.transcribe.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.transcribe.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -9875,6 +10487,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/speak/POST/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/speak/POST/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.generate.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.generate.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/speak/post(generate)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.generate.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.generate.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -10151,6 +10814,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/read/POST/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/read/POST/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.analyze.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.analyze.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/read/post(analyze)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.analyze.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.analyze.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -10309,6 +11023,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/get(projects)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -10522,6 +11287,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/get(projects_project_id)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -10712,6 +11528,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/PATCH/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/PATCH/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_2.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_2.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/patch(projects_project_id_2)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_2.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_2.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -10893,6 +11760,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/DELETE/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/DELETE/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_3.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_3.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/delete(projects_project_id_3)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_3.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_3.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -11069,6 +11987,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/leave/DELETE/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/leave/DELETE/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.leave.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.leave.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/leave/delete(leave)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.leave.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.leave.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -11273,6 +12242,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/models/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/models/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Models.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Models.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/get(projects_project_id_Models)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Models.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Models.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -11461,6 +12481,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/models/{model_id}/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/models/{model_id}/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Models_model_id.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Models_model_id.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/models/{model_id}/get(projects_project_id_Models_model_id)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Models_model_id.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Models_model_id.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -11644,6 +12715,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/models/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/models/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.models.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.models.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/models/get(models)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.models.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.models.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -11820,6 +12942,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/models/{model_id}/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/models/{model_id}/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.models_model_id.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.models_model_id.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/models/{model_id}/get(models_model_id)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.models_model_id.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.models_model_id.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -12024,6 +13197,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/keys/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/keys/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Keys.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Keys.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/keys/get(projects_project_id_Keys)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Keys.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Keys.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -12209,6 +13433,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/keys/POST/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/keys/POST/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Keys_2.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Keys_2.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/keys/post(projects_project_id_Keys_2)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Keys_2.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Keys_2.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -12402,6 +13677,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/keys/{key_id}/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/keys/{key_id}/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Keys_key_id.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Keys_key_id.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/keys/{key_id}/get(projects_project_id_Keys_key_id)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Keys_key_id.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Keys_key_id.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -12590,6 +13916,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/keys/{key_id}/DELETE/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/keys/{key_id}/DELETE/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Keys_key_id_2.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Keys_key_id_2.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/keys/{key_id}/delete(projects_project_id_Keys_key_id_2)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Keys_key_id_2.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Keys_key_id_2.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -12766,6 +14143,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/members/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/members/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Members.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Members.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/members/get(projects_project_id_Members)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Members.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Members.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -12959,6 +14387,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/members/{member_id}/DELETE/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/members/{member_id}/DELETE/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Members_member_id.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Members_member_id.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/members/{member_id}/delete(projects_project_id_Members_member_id)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Members_member_id.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Members_member_id.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -13142,6 +14621,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/members/{member_id}/scopes/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/members/{member_id}/scopes/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Members_member_id_Scopes.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Members_member_id_Scopes.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/members/{member_id}/scopes/get(projects_project_id_Members_member_id_Scopes)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Members_member_id_Scopes.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Members_member_id_Scopes.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -13344,6 +14874,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/members/{member_id}/scopes/PUT/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/members/{member_id}/scopes/PUT/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Members_member_id_Scopes_2.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Members_member_id_Scopes_2.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/members/{member_id}/scopes/put(projects_project_id_Members_member_id_Scopes_2)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Members_member_id_Scopes_2.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Members_member_id_Scopes_2.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -13520,6 +15101,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/invites/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/invites/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Invites.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Invites.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/invites/get(projects_project_id_Invites)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Invites.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Invites.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -13715,6 +15347,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/invites/POST/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/invites/POST/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Invites_2.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Invites_2.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/invites/post(projects_project_id_Invites_2)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Invites_2.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Invites_2.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -13898,6 +15581,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/invites/{email}/DELETE/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/invites/{email}/DELETE/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Invites_email.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Invites_email.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/invites/{email}/delete(projects_project_id_Invites_email)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Invites_email.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Invites_email.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -14167,6 +15901,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/requests/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/requests/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Requests.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Requests.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/requests/get(projects_project_id_Requests)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Requests.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Requests.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -14350,6 +16135,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/requests/{request_id}/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/requests/{request_id}/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Requests_request_id.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Requests_request_id.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/requests/{request_id}/get(projects_project_id_Requests_request_id)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Requests_request_id.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Requests_request_id.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -14857,6 +16693,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/usage/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/usage/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Usage.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Usage.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/usage/get(projects_project_id_Usage)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Usage.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Usage.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -15060,6 +16947,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/usage/fields/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/usage/fields/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_UsageFields.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_UsageFields.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/usage/fields/get(projects_project_id_UsageFields)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_UsageFields.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_UsageFields.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -15574,6 +17512,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/usage/breakdown/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/usage/breakdown/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_UsageBreakdown.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_UsageBreakdown.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/usage/breakdown/get(projects_project_id_UsageBreakdown)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_UsageBreakdown.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_UsageBreakdown.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -15750,6 +17739,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/balances/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/balances/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Balances.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Balances.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/balances/get(projects_project_id_Balances)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Balances.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Balances.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -15938,6 +17978,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/balances/{balance_id}/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/balances/{balance_id}/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Balances_balance_id.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Balances_balance_id.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/balances/{balance_id}/get(projects_project_id_Balances_balance_id)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Balances_balance_id.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Balances_balance_id.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -16186,6 +18277,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/billing/breakdown/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/billing/breakdown/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_BillingBreakdown.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_BillingBreakdown.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/billing/breakdown/get(projects_project_id_BillingBreakdown)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_BillingBreakdown.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_BillingBreakdown.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -16394,6 +18536,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/billing/fields/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/billing/fields/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_BillingFields.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_BillingFields.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/billing/fields/get(projects_project_id_BillingFields)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_BillingFields.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_BillingFields.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -16593,6 +18786,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/purchases/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/purchases/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_Purchases.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_Purchases.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/purchases/get(projects_project_id_Purchases)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_Purchases.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_Purchases.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -16769,6 +19013,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/self-hosted/distribution/credentials/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/self-hosted/distribution/credentials/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_SelfHostedDistributionCredentials.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_SelfHostedDistributionCredentials.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/self-hosted/distribution/credentials/get(projects_project_id_SelfHostedDistributionCredentials)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_SelfHostedDistributionCredentials.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_SelfHostedDistributionCredentials.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -16991,6 +19286,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/self-hosted/distribution/credentials/POST/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/self-hosted/distribution/credentials/POST/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_SelfHostedDistributionCredentials_2.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_SelfHostedDistributionCredentials_2.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/self-hosted/distribution/credentials/post(projects_project_id_SelfHostedDistributionCredentials_2)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_SelfHostedDistributionCredentials_2.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_SelfHostedDistributionCredentials_2.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -17174,6 +19520,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/self-hosted/distribution/credentials/{distribution_credentials_id}/GET/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/self-hosted/distribution/credentials/{distribution_credentials_id}/GET/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_SelfHostedDistributionCredentials_distribution_credentials_id.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_SelfHostedDistributionCredentials_distribution_credentials_id.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/self-hosted/distribution/credentials/{distribution_credentials_id}/get(projects_project_id_SelfHostedDistributionCredentials_distribution_credentials_id)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_SelfHostedDistributionCredentials_distribution_credentials_id.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_SelfHostedDistributionCredentials_distribution_credentials_id.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }
@@ -17367,6 +19764,57 @@ public enum Operations {
                     }
                 }
             }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/projects/{project_id}/self-hosted/distribution/credentials/{distribution_credentials_id}/DELETE/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/projects/{project_id}/self-hosted/distribution/credentials/{distribution_credentials_id}/DELETE/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.projects_project_id_SelfHostedDistributionCredentials_distribution_credentials_id_2.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.projects_project_id_SelfHostedDistributionCredentials_distribution_credentials_id_2.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/projects/{project_id}/self-hosted/distribution/credentials/{distribution_credentials_id}/delete(projects_project_id_SelfHostedDistributionCredentials_distribution_credentials_id_2)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.projects_project_id_SelfHostedDistributionCredentials_distribution_credentials_id_2.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.projects_project_id_SelfHostedDistributionCredentials_distribution_credentials_id_2.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
             /// Undocumented response.
             ///
             /// A response with a code that is not documented in the OpenAPI document.
@@ -17536,6 +19984,57 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "badRequest",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct GatewayTimeout: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/auth/grant/POST/responses/504/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/auth/grant/POST/responses/504/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.grant.Output.GatewayTimeout.Body
+                /// Creates a new `GatewayTimeout`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.grant.Output.GatewayTimeout.Body) {
+                    self.body = body
+                }
+            }
+            /// Gateway Timeout
+            ///
+            /// - Remark: Generated from `#/paths//v1/auth/grant/post(grant)/responses/504`.
+            ///
+            /// HTTP response code: `504 gatewayTimeout`.
+            case gatewayTimeout(Operations.grant.Output.GatewayTimeout)
+            /// The associated value of the enum case if `self` is `.gatewayTimeout`.
+            ///
+            /// - Throws: An error if `self` is not `.gatewayTimeout`.
+            /// - SeeAlso: `.gatewayTimeout`.
+            public var gatewayTimeout: Operations.grant.Output.GatewayTimeout {
+                get throws {
+                    switch self {
+                    case let .gatewayTimeout(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "gatewayTimeout",
                             response: self
                         )
                     }

@@ -23,6 +23,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/projects/{project_id}/agents':
     post:
       operationId: projects_project_id_Agents
@@ -53,6 +59,12 @@ paths:
                 $ref: '#/components/schemas/CreateAgentConfigurationV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -96,6 +108,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/projects/{project_id}/agents/{agent_id}':
     get:
       operationId: projects_project_id_Agents_agent_id
@@ -135,6 +153,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     put:
       operationId: projects_project_id_Agents_agent_id_2
       summary: Update Agent Metadata
@@ -169,6 +193,12 @@ paths:
                 $ref: '#/components/schemas/AgentConfigurationV1'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -217,6 +247,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/projects/{project_id}/agent-variables':
     post:
       operationId: projects_project_id_AgentVariables
@@ -247,6 +283,12 @@ paths:
                 $ref: '#/components/schemas/AgentVariableV1'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -290,6 +332,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/projects/{project_id}/agent-variables/{variable_id}':
     get:
       operationId: projects_project_id_AgentVariables_variable_id
@@ -329,6 +377,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     patch:
       operationId: projects_project_id_AgentVariables_variable_id_2
       summary: Update an Agent Variable
@@ -363,6 +417,12 @@ paths:
                 $ref: '#/components/schemas/AgentVariableV1'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -407,6 +467,12 @@ paths:
                 $ref: '#/components/schemas/DeleteAgentVariableV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -677,6 +743,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListenV1Response'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       requestBody:
         description: Transcribe an audio or video file
         content:
@@ -775,6 +847,12 @@ paths:
                 $ref: '#/components/schemas/speak_v1_audio_generate_Response_200'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -890,6 +968,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       requestBody:
         description: Analyze a text file
         content:
@@ -921,6 +1005,12 @@ paths:
                 $ref: '#/components/schemas/ListProjectsV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -974,6 +1064,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     patch:
       operationId: projects_project_id_2
       summary: Update a Project
@@ -1003,6 +1099,12 @@ paths:
                 $ref: '#/components/schemas/UpdateProjectV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -1046,6 +1148,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/projects/{project_id}/leave':
     delete:
       operationId: leave
@@ -1076,6 +1184,12 @@ paths:
                 $ref: '#/components/schemas/LeaveProjectV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -1120,6 +1234,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/projects/{project_id}/models/{model_id}':
     get:
       operationId: projects_project_id_Models_model_id
@@ -1159,6 +1279,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   /v1/models:
     get:
       operationId: models
@@ -1194,6 +1320,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/models/{model_id}':
     get:
       operationId: models_model_id
@@ -1224,6 +1356,12 @@ paths:
                 $ref: '#/components/schemas/GetModelV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -1268,6 +1406,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     post:
       operationId: projects_project_id_Keys_2
       summary: Create a Project Key
@@ -1297,6 +1441,12 @@ paths:
                 $ref: '#/components/schemas/CreateKeyV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -1346,6 +1496,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     delete:
       operationId: projects_project_id_Keys_key_id_2
       summary: Delete a Project Key
@@ -1384,6 +1540,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/projects/{project_id}/members':
     get:
       operationId: projects_project_id_Members
@@ -1414,6 +1576,12 @@ paths:
                 $ref: '#/components/schemas/ListProjectMembersV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -1457,6 +1625,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/projects/{project_id}/members/{member_id}/scopes':
     get:
       operationId: projects_project_id_Members_member_id_Scopes
@@ -1496,6 +1670,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     put:
       operationId: projects_project_id_Members_member_id_Scopes_2
       summary: Update Project Member Scopes
@@ -1530,6 +1710,12 @@ paths:
                 $ref: '#/components/schemas/UpdateProjectMemberScopesV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -1574,6 +1760,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     post:
       operationId: projects_project_id_Invites_2
       summary: Create a Project Invite
@@ -1603,6 +1795,12 @@ paths:
                 $ref: '#/components/schemas/CreateProjectInviteV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -1648,6 +1846,12 @@ paths:
                 $ref: '#/components/schemas/DeleteProjectInviteV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -1751,6 +1955,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/projects/{project_id}/requests/{request_id}':
     get:
       operationId: projects_project_id_Requests_request_id
@@ -1786,6 +1996,12 @@ paths:
                 $ref: '#/components/schemas/GetProjectRequestV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -2090,6 +2306,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/projects/{project_id}/usage/fields':
     get:
       operationId: projects_project_id_UsageFields
@@ -2134,6 +2356,12 @@ paths:
                 $ref: '#/components/schemas/UsageFieldsV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -2444,6 +2672,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/projects/{project_id}/balances':
     get:
       operationId: projects_project_id_Balances
@@ -2474,6 +2708,12 @@ paths:
                 $ref: '#/components/schemas/ListProjectBalancesV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -2513,6 +2753,12 @@ paths:
                 $ref: '#/components/schemas/GetProjectBalanceV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -2597,6 +2843,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/projects/{project_id}/billing/fields':
     get:
       operationId: projects_project_id_BillingFields
@@ -2645,6 +2897,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/projects/{project_id}/purchases':
     get:
       operationId: projects_project_id_Purchases
@@ -2687,6 +2945,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/v1/projects/{project_id}/self-hosted/distribution/credentials':
     get:
       operationId: projects_project_id_SelfHostedDistributionCredentials
@@ -2717,6 +2981,12 @@ paths:
                 $ref: '#/components/schemas/ListProjectDistributionCredentialsV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
@@ -2768,6 +3038,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       requestBody:
         description: The set of distribution credentials to create
         content:
@@ -2813,6 +3089,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     delete:
       operationId: projects_project_id_SelfHostedDistributionCredentials_distribution_credentials_id_2
       summary: Delete a Project Self-Hosted Distribution Credential
@@ -2851,6 +3133,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   /v1/auth/grant:
     post:
       operationId: grant
@@ -2876,6 +3164,12 @@ paths:
                 $ref: '#/components/schemas/GrantV1Response'
         '400':
           description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
           content:
             application/json:
               schema:
