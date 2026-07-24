@@ -47,6 +47,18 @@ actions:
 
   - target: "$.paths.*.*.responses"
     update:
+      '408':
+        description: Request Timeout
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorResponse'
+      '428':
+        description: Precondition Required
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorResponse'
       '504':
         description: Gateway Timeout
         content:
