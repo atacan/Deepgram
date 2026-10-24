@@ -26,7 +26,7 @@ RESET  := \033[0m
 # Meta Targets
 # ------------------------------------------------------------------------------
 
-.PHONY: all help check-clean merge-main format test-on-linux generate build test
+.PHONY: all help check-clean merge-main format test-on-linux generate build test regenerate test-offline
 
 # Default target runs help
 all: help
@@ -80,18 +80,18 @@ test-on-linux: ## Run swift tests inside a Docker container
 		$(DOCKER_IMAGE) \
 		swift test
 
-regenerate:
-	uvx --from git+https://github.com/atacan/swift-package-generator-based-on-openapi.git swift-bootstrapper .
+regenerate: ## Regenerate sanitized specification and Swift sources
+	uvx --from git+https://github.com/atacan/swift-package-generator-based-on-openapi.git swift-bootstrapper bootstrap .
 
 generate: ## Generate Swift code from OpenAPI spec
 	@echo "$(YELLOW)Generating Swift code from OpenAPI specification...$(RESET)"
 	swift run swift-openapi-generator generate \
 		--config openapi-generator-config-types.yaml \
-		openapi.yaml \
+		openapi.yml \
 		--output-directory Sources/DeepgramTypes/GeneratedSources
 	swift run swift-openapi-generator generate \
 		--config openapi-generator-config-client.yaml \
-		openapi.yaml \
+		openapi.yml \
 		--output-directory Sources/Deepgram/GeneratedSources
 	@echo "$(GREEN)Code generation complete!$(RESET)"
 
@@ -104,3 +104,6 @@ test: ## Run tests for the package
 	@echo "$(YELLOW)Running tests for Deepgram...$(RESET)"
 	swift test
 	@echo "$(GREEN)Tests complete!$(RESET)"
+
+test-offline: ## Run migration tests without credentials or network requests
+	swift test --filter 'AuthenticationTests|FactoryDefaultsTests|DeepgramTypesTests|DeepgramURLSessionTests|DeepgramAsyncHTTPClientTests'

@@ -38,6 +38,14 @@ info:
 #     remove: true
 
 actions:
+  # The upstream spec declares schemes but omits security requirements.
+  # Restore the authentication sent by the existing client, with JWT as an alternative.
+  - target: "$"
+    update:
+      security:
+        - ApiKeyAuth: []
+        - JwtAuth: []
+
   - target: "$.paths['/v1/listen'].post.requestBody.content"
     update:
       application/octet-stream:
