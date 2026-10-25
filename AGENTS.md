@@ -33,21 +33,20 @@ editing Authentication/GeneratedSecurity/OperationSecurity.swift directly.
 The old DeepgramTypes.AuthenticationMiddleware(apiKey:) was removed; callers use
 Deepgram.AuthenticationMiddleware(authentication:) or factory authentication.
 
-Both factories default to Configuration(dateTranscoder:
-.iso8601WithFractionalSeconds). Preserve this default and explicit configuration
-forwarding on reruns. If a custom client reports `Expected date string to be
-ISO8601-formatted`, pass the fractional-second transcoder explicitly. Direct
-Client initialization bypasses factory defaults; standalone JSONDecoder needs its
-own dateDecodingStrategy.
+Both factories and the authenticating custom-transport initializer default to
+Configuration(dateTranscoder: DeepgramDateTranscoder()), accepting ISO-8601
+with or without fractional seconds. Preserve explicit configuration forwarding.
+Standalone JSONDecoder needs its own dateDecodingStrategy.
 
 After regeneration, run `swift build` and `make test-offline`. These checks cover
 Token/JWT authentication, missing credentials, dynamic credential providers,
-fractional-second response decoding through both factories, and caller overrides.
+whole- and fractional-second response decoding through all client helpers, and caller overrides.
 Factory date tests use a middleware response fixture; authentication tests use a
 terminal mock transport. No live service is contacted.
 The preserved transcription test is opt-in through DEEPGRAM_RUN_LIVE_TESTS=1;
-never run it without explicit intent or print local credentials. Keep UsefulThings
-and existing local sample files. Do not read `.env` during offline verification.
+never run it without explicit intent or print local credentials. Preserve existing
+local sample files. The live test reads credentials from ProcessInfo, avoiding
+branch-based package dependencies. Do not read `.env` during offline verification.
 
 Generated sources are split into Types+*.swift by the resolved generator. Keep
 manual changes outside GeneratedSources. `make regenerate` preserves existing

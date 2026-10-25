@@ -8,11 +8,13 @@ import OpenAPIURLSession
 extension Client {
     /// Creates the shared API client with URLSession.
     ///
+    /// Dates accept ISO-8601 timestamps with or without fractional seconds by default.
+    ///
     /// The caller owns any injected session/client and its lifecycle.
     public static func urlSession(
         serverURL: URL,
         authentication: Authentication = .none,
-        configuration: Configuration = .init(dateTranscoder: .iso8601WithFractionalSeconds),
+        configuration: Configuration = .init(dateTranscoder: DeepgramDateTranscoder()),
         transportConfiguration: URLSessionTransport.Configuration = .init(),
         middlewares: [any ClientMiddleware] = []
     ) -> Client {

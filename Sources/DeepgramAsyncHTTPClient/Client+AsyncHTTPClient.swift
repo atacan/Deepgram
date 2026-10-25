@@ -8,11 +8,13 @@ import OpenAPIRuntime
 extension Client {
     /// Creates the shared API client with AsyncHTTPClient.
     ///
+    /// Dates accept ISO-8601 timestamps with or without fractional seconds by default.
+    ///
     /// The caller owns any injected session/client and its lifecycle.
     public static func asyncHTTPClient(
         serverURL: URL,
         authentication: Authentication = .none,
-        configuration: Configuration = .init(dateTranscoder: .iso8601WithFractionalSeconds),
+        configuration: Configuration = .init(dateTranscoder: DeepgramDateTranscoder()),
         transportConfiguration: AsyncHTTPClientTransport.Configuration = .init(),
         middlewares: [any ClientMiddleware] = []
     ) -> Client {

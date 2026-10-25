@@ -13,15 +13,15 @@ specification with `swift-openapi-generator`.
 Add the package to `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/atacan/SwiftDeepgram.git", branch: "main")
+.package(url: "https://github.com/atacan/deepgram.git", branch: "main")
 ```
 
 Add the core product and your chosen transport product to your target:
 
 ```swift
-.product(name: "Deepgram", package: "SwiftDeepgram"),
-.product(name: "DeepgramURLSession", package: "SwiftDeepgram"),
-// Or: .product(name: "DeepgramAsyncHTTPClient", package: "SwiftDeepgram")
+.product(name: "Deepgram", package: "deepgram"),
+.product(name: "DeepgramURLSession", package: "deepgram"),
+// Or: .product(name: "DeepgramAsyncHTTPClient", package: "deepgram")
 ```
 
 The four products are `DeepgramTypes` (models and operation inputs/outputs),
@@ -57,8 +57,9 @@ let client = Client.asyncHTTPClient(
 )
 ```
 
-Both factories return `Deepgram.Client` and default to fractional-second ISO-8601
-response decoding. Supply a raw API key: shared authentication adds Deepgram's
+Both factories return `Deepgram.Client` and accept ISO-8601 response dates with or
+without fractional seconds by default. Supply a raw API key: shared authentication
+adds Deepgram's
 `Authorization: Token <key>` header. For JWT credentials, use `.bearer("<jwt>")`.
 Dynamic keys use `.apiKey { try await keyStore.currentKey() }` and are evaluated
 per request; provider failures propagate. Named credentials use
@@ -79,11 +80,10 @@ must manage their lifecycle; never shut down a shared client.
 
 For another transport, use
 `Client(serverURL:configuration:transport:authentication:middlewares:)` from the
-core product. Direct initialization requires an explicit fractional-second date
-transcoder when decoding Deepgram timestamps. Standalone `JSONDecoder` instances
-also need their own date strategy. An `Expected date string to be ISO8601-formatted`
-error usually means a custom configuration is missing
-`.init(dateTranscoder: .iso8601WithFractionalSeconds)`.
+core product. This authenticating initializer has the same lenient date default
+as the factories. An explicit `configuration:` is always respected. Standalone
+`JSONDecoder` instances need their own date strategy; use
+`DeepgramDateTranscoder().decode(_:)` in a custom strategy.
 
 ### Migration compatibility
 
@@ -97,8 +97,14 @@ The resolved dependency graph requires Swift 6.2; the package now declares that
 minimum instead of the previous Swift 5.9 requirement. Package resolution may still
 fetch both transport dependencies even when an application uses only one product.
 
+Transcription failures now use `ErrorResponse` for HTTP 400, 401, 402, and 429
+(the generated HTTP 402 case is `.code402`). Legacy errors require `err_msg` and
+modern errors require `message`, so decoding preserves the correct error shape.
+Multi-value redaction accepts strings instead of a closed three-value enum.
+These changes alter public types and require a major version when released.
+
 Do not commit API keys or local environment files. For local development, keep
-credentials in an ignored `.env` file or your shell environment.
+credentials in your shell environment.
 
 ## Development
 
@@ -126,7 +132,7 @@ make test-offline
 ```
 
 `swift test` also skips the live transcription test by default. To run that test
-intentionally, provide `.env` credentials and a root `sample.m4a`, then use
+intentionally, export `DEEPGRAM_API_KEY` and provide a root `sample.m4a`, then use
 `DEEPGRAM_RUN_LIVE_TESTS=1 swift test --filter DeepgramTests`.
 
 ## Security

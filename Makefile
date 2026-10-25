@@ -106,4 +106,4 @@ test: ## Run tests for the package
 	@echo "$(GREEN)Tests complete!$(RESET)"
 
 test-offline: ## Run migration tests without credentials or network requests
-	swift test --filter 'AuthenticationTests|FactoryDefaultsTests|DeepgramTypesTests|DeepgramURLSessionTests|DeepgramAsyncHTTPClientTests'
+	swift test --filter 'TranscriptionRegressionTests|AuthenticationTests|FactoryDefaultsTests|DeepgramTypesTests|DeepgramURLSessionTests|DeepgramAsyncHTTPClientTests'

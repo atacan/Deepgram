@@ -10,8 +10,8 @@ import Testing
 private let serverURL = URL(string: "https://api.deepgram.com")!
 private let agentJSON = #"{"agent_id":"agent","config":{},"created_at":"2026-10-03T14:40:37.263Z"}"#
 
-private func fixtureResponse() -> (HTTPResponse, HTTPBody?) {
-    (HTTPResponse(status: .ok, headerFields: [.contentType: "application/json"]), HTTPBody(agentJSON))
+private func fixtureResponse(created: String = "2026-10-03T14:40:37.263Z") -> (HTTPResponse, HTTPBody?) {
+    (HTTPResponse(status: .ok, headerFields: [.contentType: "application/json"]), HTTPBody(agentJSON.replacingOccurrences(of: "2026-10-03T14:40:37.263Z", with: created)))
 }
 
 private func fetchAgent(_ client: Client) async throws -> Components.Schemas.AgentConfigurationV1 {
@@ -24,6 +24,7 @@ private func fetchAgent(_ client: Client) async throws -> Components.Schemas.Age
 // Short-circuit the network while retaining the factory's HTTP response conversion.
 // Authentication is verified separately using a terminal mock transport below.
 private struct FixtureMiddleware: ClientMiddleware {
+    var created = "2026-10-03T14:40:37.263Z"
     func intercept(
         _ request: HTTPRequest,
         body: HTTPBody?,
@@ -33,23 +34,32 @@ private struct FixtureMiddleware: ClientMiddleware {
     ) async throws -> (HTTPResponse, HTTPBody?) {
         #expect(request.path == "/v1/projects/project/agents/agent")
         #expect(baseURL == serverURL)
-        return fixtureResponse()
+        return fixtureResponse(created: created)
     }
 }
 
 private enum Factory: CaseIterable, Sendable {
-    case urlSession, asyncHTTPClient
+    case urlSession, asyncHTTPClient, customTransport
 
-    func makeClient(configuration: Configuration? = nil) -> Client {
+    func makeClient(configuration: Configuration? = nil, created: String = "2026-10-03T14:40:37.263Z") -> Client {
         switch (self, configuration) {
+        case (.customTransport, nil):
+            return Client(serverURL: serverURL, transport: AuthenticationTransport(expectedAuthorization: "Token test-key", created: created), authentication: .apiKey("test-key"))
+        case (.customTransport, .some(let configuration)):
+            return Client(
+                serverURL: serverURL,
+                configuration: configuration,
+                transport: AuthenticationTransport(expectedAuthorization: "Token test-key", created: created),
+                authentication: .apiKey("test-key")
+            )
         case (.urlSession, nil):
-            return .urlSession(serverURL: serverURL, authentication: .apiKey("test-key"), middlewares: [FixtureMiddleware()])
+            return .urlSession(serverURL: serverURL, authentication: .apiKey("test-key"), middlewares: [FixtureMiddleware(created: created)])
         case (.asyncHTTPClient, nil):
-            return .asyncHTTPClient(serverURL: serverURL, authentication: .apiKey("test-key"), middlewares: [FixtureMiddleware()])
+            return .asyncHTTPClient(serverURL: serverURL, authentication: .apiKey("test-key"), middlewares: [FixtureMiddleware(created: created)])
         case (.urlSession, .some(let configuration)):
-            return .urlSession(serverURL: serverURL, configuration: configuration, middlewares: [FixtureMiddleware()])
+            return .urlSession(serverURL: serverURL, configuration: configuration, middlewares: [FixtureMiddleware(created: created)])
         case (.asyncHTTPClient, .some(let configuration)):
-            return .asyncHTTPClient(serverURL: serverURL, configuration: configuration, middlewares: [FixtureMiddleware()])
+            return .asyncHTTPClient(serverURL: serverURL, configuration: configuration, middlewares: [FixtureMiddleware(created: created)])
         }
     }
 }
@@ -60,12 +70,13 @@ private struct OverrideDateTranscoder: DateTranscoder {
 }
 
 struct FactoryDefaultsTests {
-    @Test(arguments: Factory.allCases)
-    fileprivate func decodesFractionalSeconds(factory: Factory) async throws {
-        let agent = try await fetchAgent(factory.makeClient())
+    @Test(arguments: Factory.allCases, ["2026-10-03T14:40:37.263Z", "2026-10-03T14:40:37Z"])
+    fileprivate func decodesISO8601Dates(factory: Factory, created: String) async throws {
+        let agent = try await fetchAgent(factory.makeClient(created: created))
         #expect(agent.agent_id == "agent")
+        let createdStringHasFraction = created.contains(".")
         let created = try #require(agent.created_at)
-        #expect(abs(created.timeIntervalSince1970 - 1_791_038_437.263) < 0.001)
+        #expect(abs(created.timeIntervalSince1970 - (createdStringHasFraction ? 1_791_038_437.263 : 1_791_038_437)) < 0.001)
     }
 
     @Test(arguments: Factory.allCases)
@@ -77,11 +88,12 @@ struct FactoryDefaultsTests {
 
 private struct AuthenticationTransport: ClientTransport {
     var expectedAuthorization: String?
+    var created = "2026-10-03T14:40:37.263Z"
 
     func send(_ request: HTTPRequest, body: HTTPBody?, baseURL: URL, operationID: String) async throws -> (HTTPResponse, HTTPBody?) {
         #expect(request.headerFields[.authorization] == expectedAuthorization)
         #expect(operationID == Operations.projects_project_id_Agents_agent_id.id)
-        return fixtureResponse()
+        return fixtureResponse(created: created)
     }
 }
 

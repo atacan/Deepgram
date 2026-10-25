@@ -316,7 +316,7 @@ extension Components {
             /// The error message
             ///
             /// - Remark: Generated from `#/components/schemas/ErrorResponseLegacyError/err_msg`.
-            public var err_msg: Swift.String?
+            public var err_msg: Swift.String
             /// The request ID
             ///
             /// - Remark: Generated from `#/components/schemas/ErrorResponseLegacyError/request_id`.
@@ -329,7 +329,7 @@ extension Components {
             ///   - request_id: The request ID
             public init(
                 err_code: Swift.String? = nil,
-                err_msg: Swift.String? = nil,
+                err_msg: Swift.String,
                 request_id: Swift.String? = nil
             ) {
                 self.err_code = err_code
@@ -351,7 +351,7 @@ extension Components {
             /// A message about the error
             ///
             /// - Remark: Generated from `#/components/schemas/ErrorResponseModernError/message`.
-            public var message: Swift.String?
+            public var message: Swift.String
             /// A description of the error
             ///
             /// - Remark: Generated from `#/components/schemas/ErrorResponseModernError/details`.
@@ -369,7 +369,7 @@ extension Components {
             ///   - request_id: The unique identifier of the request
             public init(
                 category: Swift.String? = nil,
-                message: Swift.String? = nil,
+                message: Swift.String,
                 details: Swift.String? = nil,
                 request_id: Swift.String? = nil
             ) {
@@ -1158,11 +1158,7 @@ extension Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/V1ListenPostParametersRedactSchemaOneOf1Items`.
-        @frozen public enum V1ListenPostParametersRedactSchemaOneOf1Items: String, Codable, Hashable, Sendable, CaseIterable {
-            case pci = "pci"
-            case pii = "pii"
-            case numbers = "numbers"
-        }
+        public typealias V1ListenPostParametersRedactSchemaOneOf1Items = Swift.String
         /// - Remark: Generated from `#/components/schemas/V1ListenPostParametersRedact1`.
         public typealias V1ListenPostParametersRedact1 = [Components.Schemas.V1ListenPostParametersRedactSchemaOneOf1Items]
         /// - Remark: Generated from `#/components/schemas/V1ListenPostParametersRedact`.
@@ -1603,6 +1599,14 @@ extension Components {
             public var end: Swift.Double?
             /// - Remark: Generated from `#/components/schemas/ListenV1ResponseResultsChannelsItemsAlternativesItemsWordsItems/confidence`.
             public var confidence: Swift.Double?
+            /// - Remark: Generated from `#/components/schemas/ListenV1ResponseResultsChannelsItemsAlternativesItemsWordsItems/speaker`.
+            public var speaker: Swift.Int?
+            /// - Remark: Generated from `#/components/schemas/ListenV1ResponseResultsChannelsItemsAlternativesItemsWordsItems/speaker_confidence`.
+            public var speaker_confidence: Swift.Double?
+            /// - Remark: Generated from `#/components/schemas/ListenV1ResponseResultsChannelsItemsAlternativesItemsWordsItems/punctuated_word`.
+            public var punctuated_word: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/ListenV1ResponseResultsChannelsItemsAlternativesItemsWordsItems/language`.
+            public var language: Swift.String?
             /// Creates a new `ListenV1ResponseResultsChannelsItemsAlternativesItemsWordsItems`.
             ///
             /// - Parameters:
@@ -1610,22 +1614,38 @@ extension Components {
             ///   - start:
             ///   - end:
             ///   - confidence:
+            ///   - speaker:
+            ///   - speaker_confidence:
+            ///   - punctuated_word:
+            ///   - language:
             public init(
                 word: Swift.String? = nil,
                 start: Swift.Double? = nil,
                 end: Swift.Double? = nil,
-                confidence: Swift.Double? = nil
+                confidence: Swift.Double? = nil,
+                speaker: Swift.Int? = nil,
+                speaker_confidence: Swift.Double? = nil,
+                punctuated_word: Swift.String? = nil,
+                language: Swift.String? = nil
             ) {
                 self.word = word
                 self.start = start
                 self.end = end
                 self.confidence = confidence
+                self.speaker = speaker
+                self.speaker_confidence = speaker_confidence
+                self.punctuated_word = punctuated_word
+                self.language = language
             }
             public enum CodingKeys: String, CodingKey {
                 case word
                 case start
                 case end
                 case confidence
+                case speaker
+                case speaker_confidence
+                case punctuated_word
+                case language
             }
         }
         /// - Remark: Generated from `#/components/schemas/ListenV1ResponseResultsChannelsItemsAlternativesItemsParagraphsParagraphsItemsSentencesItems`.

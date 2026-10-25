@@ -5,7 +5,6 @@ import DeepgramAsyncHTTPClient
 import DeepgramTypes
 import OpenAPIRuntime
 import Testing
-import UsefulThings
 
 import class Foundation.ProcessInfo
 
@@ -23,14 +22,11 @@ import class Foundation.JSONDecoder
 
 struct DeepgramTests {
     func makeClient() throws -> Client {
-        let envFileUrl = URL(fileURLWithPath: #filePath)
-            .deletingLastPathComponent()
-            .deletingLastPathComponent()
-            .deletingLastPathComponent()
-            .appendingPathComponent(".env")
+        let environment = ProcessInfo.processInfo.environment
         let apiKey =
-            getEnvironmentVariable("DEEPGRAM_API_TOKEN", from: envFileUrl)
-            ?? getEnvironmentVariable("API_KEY", from: envFileUrl)
+            environment["DEEPGRAM_API_KEY"]
+            ?? environment["DEEPGRAM_API_TOKEN"]
+            ?? environment["API_KEY"]
         let requiredAPIKey = try #require(apiKey)
         return Client.asyncHTTPClient(
             serverURL: try Servers.Server1.url(),

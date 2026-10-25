@@ -3806,9 +3806,10 @@ public enum Operations {
                 ///
                 /// - Remark: Generated from `#/paths/v1/listen/POST/query/detect_language`.
                 public var detect_language: Components.Schemas.V1ListenPostParametersDetectLanguage?
-                /// Recognize speaker changes. Each word in the transcript will be assigned a speaker number starting at 0
+                /// Deprecated: use diarize_model instead. Recognize speaker changes using the v1 diarizer. Do not combine with diarize_model.
                 ///
                 /// - Remark: Generated from `#/paths/v1/listen/POST/query/diarize`.
+                @available(*, deprecated)
                 public var diarize: Swift.Bool?
                 /// Dictation mode for controlling formatting with dictated speech
                 ///
@@ -3894,6 +3895,22 @@ public enum Operations {
                 ///
                 /// - Remark: Generated from `#/paths/v1/listen/POST/query/mip_opt_out`.
                 public var mip_opt_out: Swift.Bool?
+                /// Sample rate in Hz of submitted raw audio. Required with encoding for raw audio; omit for containerized audio.
+                ///
+                /// - Remark: Generated from `#/paths/v1/listen/POST/query/sample_rate`.
+                public var sample_rate: Swift.Int?
+                /// Number of channels in submitted raw audio. Required for raw multichannel audio.
+                ///
+                /// - Remark: Generated from `#/paths/v1/listen/POST/query/channels`.
+                public var channels: Swift.Int?
+                /// Enables diarization and selects its version (latest, v1, or v2 for batch). Do not combine with deprecated diarize.
+                ///
+                /// - Remark: Generated from `#/paths/v1/listen/POST/query/diarize_model`.
+                public var diarize_model: Swift.String?
+                /// Language hints for Nova-3 with language=multi. Repeat for multiple languages; ignored without language=multi.
+                ///
+                /// - Remark: Generated from `#/paths/v1/listen/POST/query/language_hint`.
+                public var language_hint: [Swift.String]?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
@@ -3911,7 +3928,7 @@ public enum Operations {
                 ///   - custom_intent_mode: Sets how the model will interpret intents submitted to the `custom_intent` param. When `strict`, the model will only return intents submitted using the `custom_intent` param. When `extended`, the model will return its own detected intents in the `custom_intent` param.
                 ///   - detect_entities: Identifies and extracts key entities from content in submitted audio
                 ///   - detect_language: Identifies the dominant language spoken in submitted audio
-                ///   - diarize: Recognize speaker changes. Each word in the transcript will be assigned a speaker number starting at 0
+                ///   - diarize: Deprecated: use diarize_model instead. Recognize speaker changes using the v1 diarizer. Do not combine with diarize_model.
                 ///   - dictation: Dictation mode for controlling formatting with dictated speech
                 ///   - encoding: Specify the expected encoding of your submitted audio
                 ///   - filler_words: Filler Words can help transcribe interruptions in your audio, like "uh" and "um"
@@ -3933,6 +3950,10 @@ public enum Operations {
                 ///   - utt_split: Seconds to wait before detecting a pause between words in submitted audio
                 ///   - version: Version of an AI model to use
                 ///   - mip_opt_out: Opts out requests from the Deepgram Model Improvement Program. Refer to our Docs for pricing impacts before setting this to true. https://dpgr.am/deepgram-mip
+                ///   - sample_rate: Sample rate in Hz of submitted raw audio. Required with encoding for raw audio; omit for containerized audio.
+                ///   - channels: Number of channels in submitted raw audio. Required for raw multichannel audio.
+                ///   - diarize_model: Enables diarization and selects its version (latest, v1, or v2 for batch). Do not combine with deprecated diarize.
+                ///   - language_hint: Language hints for Nova-3 with language=multi. Repeat for multiple languages; ignored without language=multi.
                 public init(
                     callback: Swift.String? = nil,
                     callback_method: Components.Schemas.V1ListenPostParametersCallbackMethod? = nil,
@@ -3969,7 +3990,11 @@ public enum Operations {
                     utterances: Swift.Bool? = nil,
                     utt_split: Swift.Double? = nil,
                     version: Components.Schemas.V1ListenPostParametersVersion? = nil,
-                    mip_opt_out: Swift.Bool? = nil
+                    mip_opt_out: Swift.Bool? = nil,
+                    sample_rate: Swift.Int? = nil,
+                    channels: Swift.Int? = nil,
+                    diarize_model: Swift.String? = nil,
+                    language_hint: [Swift.String]? = nil
                 ) {
                     self.callback = callback
                     self.callback_method = callback_method
@@ -4007,6 +4032,10 @@ public enum Operations {
                     self.utt_split = utt_split
                     self.version = version
                     self.mip_opt_out = mip_opt_out
+                    self.sample_rate = sample_rate
+                    self.channels = channels
+                    self.diarize_model = diarize_model
+                    self.language_hint = language_hint
                 }
             }
             public var query: Operations.transcribe.Input.Query
@@ -4102,12 +4131,12 @@ public enum Operations {
                 /// - Remark: Generated from `#/paths/v1/listen/POST/responses/400/content`.
                 @frozen public enum Body: Sendable, Hashable {
                     /// - Remark: Generated from `#/paths/v1/listen/POST/responses/400/content/application\/json`.
-                    case json(Components.Schemas.ListenV1Response)
+                    case json(Components.Schemas.ErrorResponse)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    public var json: Components.Schemas.ListenV1Response {
+                    public var json: Components.Schemas.ErrorResponse {
                         get throws {
                             switch self {
                             case let .json(body):
@@ -4126,7 +4155,7 @@ public enum Operations {
                     self.body = body
                 }
             }
-            /// Invalid Request
+            /// Bad Request
             ///
             /// - Remark: Generated from `#/paths//v1/listen/post(transcribe)/responses/400`.
             ///
@@ -4297,6 +4326,159 @@ public enum Operations {
                     default:
                         try throwUnexpectedResponseStatus(
                             expectedStatus: "gatewayTimeout",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct Unauthorized: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/listen/POST/responses/401/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/listen/POST/responses/401/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.transcribe.Output.Unauthorized.Body
+                /// Creates a new `Unauthorized`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.transcribe.Output.Unauthorized.Body) {
+                    self.body = body
+                }
+            }
+            /// Unauthorized
+            ///
+            /// - Remark: Generated from `#/paths//v1/listen/post(transcribe)/responses/401`.
+            ///
+            /// HTTP response code: `401 unauthorized`.
+            case unauthorized(Operations.transcribe.Output.Unauthorized)
+            /// The associated value of the enum case if `self` is `.unauthorized`.
+            ///
+            /// - Throws: An error if `self` is not `.unauthorized`.
+            /// - SeeAlso: `.unauthorized`.
+            public var unauthorized: Operations.transcribe.Output.Unauthorized {
+                get throws {
+                    switch self {
+                    case let .unauthorized(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "unauthorized",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct Code402: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/listen/POST/responses/402/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/listen/POST/responses/402/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.transcribe.Output.Code402.Body
+                /// Creates a new `Code402`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.transcribe.Output.Code402.Body) {
+                    self.body = body
+                }
+            }
+            /// Payment Required
+            ///
+            /// - Remark: Generated from `#/paths//v1/listen/post(transcribe)/responses/402`.
+            ///
+            /// HTTP response code: `402 code402`.
+            case code402(Operations.transcribe.Output.Code402)
+            /// The associated value of the enum case if `self` is `.code402`.
+            ///
+            /// - Throws: An error if `self` is not `.code402`.
+            /// - SeeAlso: `.code402`.
+            public var code402: Operations.transcribe.Output.Code402 {
+                get throws {
+                    switch self {
+                    case let .code402(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "code402",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct TooManyRequests: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1/listen/POST/responses/429/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1/listen/POST/responses/429/content/application\/json`.
+                    case json(Components.Schemas.ErrorResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.ErrorResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.transcribe.Output.TooManyRequests.Body
+                /// Creates a new `TooManyRequests`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.transcribe.Output.TooManyRequests.Body) {
+                    self.body = body
+                }
+            }
+            /// Too Many Requests
+            ///
+            /// - Remark: Generated from `#/paths//v1/listen/post(transcribe)/responses/429`.
+            ///
+            /// HTTP response code: `429 tooManyRequests`.
+            case tooManyRequests(Operations.transcribe.Output.TooManyRequests)
+            /// The associated value of the enum case if `self` is `.tooManyRequests`.
+            ///
+            /// - Throws: An error if `self` is not `.tooManyRequests`.
+            /// - SeeAlso: `.tooManyRequests`.
+            public var tooManyRequests: Operations.transcribe.Output.TooManyRequests {
+                get throws {
+                    switch self {
+                    case let .tooManyRequests(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "tooManyRequests",
                             response: self
                         )
                     }

@@ -73,3 +73,100 @@ actions:
           application/json:
             schema:
               $ref: '#/components/schemas/ErrorResponse'
+
+  # Keep transcription failures typed as errors, rather than successful transcripts.
+  # https://developers.deepgram.com/docs/errors
+  - target: "$.paths['/v1/listen'].post.responses"
+    update:
+      '400':
+        description: Bad Request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorResponse'
+      '401':
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorResponse'
+      '402':
+        description: Payment Required
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorResponse'
+      '429':
+        description: Too Many Requests
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorResponse'
+
+  # Distinguish the two object variants so a modern message is not lost to
+  # the legacy variant's otherwise all-optional properties.
+  - target: "$.components.schemas.ErrorResponseLegacyError"
+    update:
+      required: [err_msg]
+  - target: "$.components.schemas.ErrorResponseModernError"
+    update:
+      required: [message]
+
+  # https://developers.deepgram.com/docs/diarization
+  # https://developers.deepgram.com/docs/multilingual-code-switching
+  - target: "$.components.schemas.ListenV1ResponseResultsChannelsItemsAlternativesItemsWordsItems"
+    update:
+      properties:
+        speaker:
+          type: integer
+        speaker_confidence:
+          type: number
+          format: double
+        punctuated_word:
+          type: string
+        language:
+          type: string
+
+  # Entity types evolve; allow every documented redaction string in arrays.
+  # https://developers.deepgram.com/docs/redaction
+  - target: "$.components.schemas.V1ListenPostParametersRedactSchemaOneOf1Items.enum"
+    remove: true
+
+  - target: "$.paths['/v1/listen'].post.parameters[?(@.name == 'diarize')]"
+    update:
+      deprecated: true
+      description: 'Deprecated: use diarize_model instead. Recognize speaker changes using the v1 diarizer. Do not combine with diarize_model.'
+
+  # https://developers.deepgram.com/reference/speech-to-text/listen-pre-recorded
+  # Raw audio requires sample_rate and channels alongside encoding.
+  - target: "$.paths['/v1/listen'].post"
+    update:
+      parameters:
+        - name: sample_rate
+          in: query
+          required: false
+          description: Sample rate in Hz of submitted raw audio. Required with encoding for raw audio; omit for containerized audio.
+          schema:
+            type: integer
+        - name: channels
+          in: query
+          required: false
+          description: Number of channels in submitted raw audio. Required for raw multichannel audio.
+          schema:
+            type: integer
+        - name: diarize_model
+          in: query
+          required: false
+          description: Enables diarization and selects its version (latest, v1, or v2 for batch). Do not combine with deprecated diarize.
+          schema:
+            type: string
+        - name: language_hint
+          in: query
+          required: false
+          description: Language hints for Nova-3 with language=multi. Repeat for multiple languages; ignored without language=multi.
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string

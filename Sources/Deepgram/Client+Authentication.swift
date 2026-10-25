@@ -6,10 +6,12 @@ import OpenAPIRuntime
 extension Client {
     /// Configures authentication once for any ClientTransport.
     ///
+    /// Dates accept ISO-8601 timestamps with or without fractional seconds by default.
+    ///
     /// Additional middleware runs before authentication on outgoing requests.
     public init(
         serverURL: URL,
-        configuration: Configuration = .init(),
+        configuration: Configuration = .init(dateTranscoder: DeepgramDateTranscoder()),
         transport: any ClientTransport,
         authentication: Authentication,
         middlewares: [any ClientMiddleware] = []
